@@ -1,0 +1,87 @@
+\hypertarget{arithmetic_8h_source}{}\doxysection{arithmetic.\+h}
+\label{arithmetic_8h_source}\index{/home/steaky/git/CRS/src/EllipticCurves/arithmetic.h@{/home/steaky/git/CRS/src/EllipticCurves/arithmetic.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_ARITHMETIC\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_ARITHMETIC\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}string.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}stdbool.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{memory_8h}{memory.h}}"{}}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}models.h"{}}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}auxiliary.h"{}}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include "{}pretty\_print.h"{}}}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <gmp.h>}}
+\DoxyCodeLine{13 \textcolor{preprocessor}{\#include <flint/fmpz.h>}}
+\DoxyCodeLine{14 \textcolor{preprocessor}{\#include <flint/fq.h>}}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16 \textcolor{preprocessor}{\#include "{}../Polynomials/roots.h"{}}}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18 \textcolor{comment}{/*********************************************}}
+\DoxyCodeLine{19 \textcolor{comment}{   Base field embbeding}}
+\DoxyCodeLine{20 \textcolor{comment}{*********************************************/}}
+\DoxyCodeLine{21 \textcolor{keywordtype}{void} MG\_curve\_update\_field(\mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *, \mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *, \textcolor{keyword}{const} fq\_ctx\_t *);}
+\DoxyCodeLine{22 \textcolor{keywordtype}{void} MG\_curve\_update\_field\_(\mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *, \textcolor{keyword}{const} fq\_ctx\_t *);}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{comment}{/*********************************************}}
+\DoxyCodeLine{25 \textcolor{comment}{ Elliptic curves}}
+\DoxyCodeLine{26 \textcolor{comment}{*********************************************/}}
+\DoxyCodeLine{27 \textcolor{keywordtype}{void} SW\_j\_invariant(fq\_t *, \mbox{\hyperlink{struct_s_w__curve__t}{SW\_curve\_t}} *);}
+\DoxyCodeLine{28 \textcolor{keywordtype}{void} MG\_j\_invariant(fq\_t *, \mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *);}
+\DoxyCodeLine{29 \textcolor{keywordtype}{void} TN\_j\_invariant(fq\_t *, \mbox{\hyperlink{struct_t_n__curve__t}{TN\_curve\_t}} *);}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31 \textcolor{comment}{/*********************************************}}
+\DoxyCodeLine{32 \textcolor{comment}{ Points on elliptic curves}}
+\DoxyCodeLine{33 \textcolor{comment}{*********************************************/}}
+\DoxyCodeLine{34 \textcolor{keywordtype}{void} SW\_point\_isinfinity(\textcolor{keywordtype}{bool} *, \mbox{\hyperlink{struct_s_w__point__t}{SW\_point\_t}} *);}
+\DoxyCodeLine{35 \textcolor{keywordtype}{void} MG\_point\_isinfinity(\textcolor{keywordtype}{bool} *, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *);}
+\DoxyCodeLine{36 \textcolor{keywordtype}{bool} MG\_point\_isinfinity\_(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *);}
+\DoxyCodeLine{37 \textcolor{keywordtype}{int} SW\_point\_isvalid(\textcolor{keywordtype}{bool} *, \mbox{\hyperlink{struct_s_w__point__t}{SW\_point\_t}} *);}
+\DoxyCodeLine{38 \textcolor{keywordtype}{int} MG\_point\_isvalid(\textcolor{keywordtype}{bool} *, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *);}
+\DoxyCodeLine{39 \textcolor{keywordtype}{void} MG\_point\_isinfty(\textcolor{keywordtype}{bool} *, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *);}
+\DoxyCodeLine{40 \textcolor{keywordtype}{void} MG\_point\_normalize(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42 \textcolor{comment}{/*********************************************}}
+\DoxyCodeLine{43 \textcolor{comment}{ Random torsion point generation}}
+\DoxyCodeLine{44 \textcolor{comment}{*********************************************/}}
+\DoxyCodeLine{45 \textcolor{keywordtype}{void} SW\_point\_rand\_ninfty(\mbox{\hyperlink{struct_s_w__point__t}{SW\_point\_t}} *);}
+\DoxyCodeLine{46 \textcolor{keywordtype}{void} MG\_point\_rand\_ninfty(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, flint\_rand\_t);}
+\DoxyCodeLine{47 \textcolor{keywordtype}{void} MG\_point\_rand\_ninfty\_nsquare(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, flint\_rand\_t);}
+\DoxyCodeLine{48 }
+\DoxyCodeLine{49 \textcolor{comment}{/*********************************************}}
+\DoxyCodeLine{50 \textcolor{comment}{ Montgomery curve arithmetic}}
+\DoxyCodeLine{51 \textcolor{comment}{*********************************************/}}
+\DoxyCodeLine{52 \textcolor{keywordtype}{int} MG\_curve\_normalize(\mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *);}
+\DoxyCodeLine{53 \textcolor{keywordtype}{int} MG\_rec\_y(fq\_t, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *);}
+\DoxyCodeLine{54 \textcolor{keywordtype}{void} MG\_xADD(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}}, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}}, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}});}
+\DoxyCodeLine{55 \textcolor{keywordtype}{void} MG\_xDBL(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}});}
+\DoxyCodeLine{56 \textcolor{keywordtype}{void} MG\_xDBL\_const(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} ,\textcolor{keyword}{const} fq\_t);}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{comment}{/*********************************************}}
+\DoxyCodeLine{59 \textcolor{comment}{ Montgomery ladder}}
+\DoxyCodeLine{60 \textcolor{comment}{*********************************************/}}
+\DoxyCodeLine{61 \textcolor{keywordtype}{void} MG\_ladder\_rec(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, fmpz\_t, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}}, \textcolor{keyword}{const} fq\_ctx\_t *);}
+\DoxyCodeLine{62 \textcolor{keywordtype}{void} MG\_ladder(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *x0, fmpz\_t k, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} P);}
+\DoxyCodeLine{63 \textcolor{keywordtype}{void} MG\_ladder\_iter(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, fmpz\_t, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}}, fq\_ctx\_t *);}
+\DoxyCodeLine{64 \textcolor{keywordtype}{void} MG\_ladder\_iter\_(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, fmpz\_t, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *);}
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66 \textcolor{comment}{/*********************************************}}
+\DoxyCodeLine{67 \textcolor{comment}{ Torsion}}
+\DoxyCodeLine{68 \textcolor{comment}{*********************************************/}}
+\DoxyCodeLine{69 \textcolor{keywordtype}{void} MG\_curve\_trace(fmpz\_t);}
+\DoxyCodeLine{70 \textcolor{keywordtype}{void} MG\_curve\_card\_base(fmpz\_t, \mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *);}
+\DoxyCodeLine{71 \textcolor{keywordtype}{void} MG\_curve\_card\_ext(fmpz\_t, \mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *, fmpz\_t r);}
+\DoxyCodeLine{72 \textcolor{keywordtype}{int} MG\_curve\_rand\_torsion(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, fmpz\_t, fmpz\_t);}
+\DoxyCodeLine{73 \textcolor{keywordtype}{int} MG\_curve\_rand\_torsion\_(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, fmpz\_t, fmpz\_t);}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{comment}{/*********************************************}}
+\DoxyCodeLine{76 \textcolor{comment}{ Tate normal curve and Montgomery conversion}}
+\DoxyCodeLine{77 \textcolor{comment}{*********************************************/}}
+\DoxyCodeLine{78 \textcolor{keywordtype}{void} MG\_get\_TN(\mbox{\hyperlink{struct_t_n__curve__t}{TN\_curve\_t}} *, \mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, fmpz\_t);}
+\DoxyCodeLine{79 \textcolor{keywordtype}{int} TN\_get\_MG(\mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *, \mbox{\hyperlink{struct_t_n__curve__t}{TN\_curve\_t}} *);}
+\DoxyCodeLine{80 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{81 }
+
+\end{DoxyCode}

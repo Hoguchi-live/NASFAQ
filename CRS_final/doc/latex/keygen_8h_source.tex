@@ -1,0 +1,35 @@
+\hypertarget{keygen_8h_source}{}\doxysection{keygen.\+h}
+\label{keygen_8h_source}\index{/home/steaky/git/CRS/src/Exchange/keygen.h@{/home/steaky/git/CRS/src/Exchange/keygen.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef \_KEYGEN\_H\_}}
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#define \_KEYGEN\_H\_}}
+\DoxyCodeLine{3 }
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <stdio.h>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <stdlib.h>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <time.h>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include "{}setup.h"{}}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <gmp.h>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <flint/fmpz.h>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <flint/fq.h>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{typedef} \textcolor{keyword}{struct }\mbox{\hyperlink{structkey____t}{key\_\_t}} \{}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     uint nb\_primes;}
+\DoxyCodeLine{17     \mbox{\hyperlink{structlprime__t}{lprime\_t}} *lprimes;}
+\DoxyCodeLine{18     fmpz\_t *steps;}
+\DoxyCodeLine{19 \} \mbox{\hyperlink{structkey____t}{key\_\_t}};}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21 \textcolor{keywordtype}{void} key\_init(\mbox{\hyperlink{structkey____t}{key\_\_t}} *, \mbox{\hyperlink{structcfg__t}{cfg\_t}} *);}
+\DoxyCodeLine{22 \mbox{\hyperlink{structkey____t}{key\_\_t}} *key\_init\_(\mbox{\hyperlink{structcfg__t}{cfg\_t}} *);}
+\DoxyCodeLine{23 \textcolor{keywordtype}{void} keygen(\mbox{\hyperlink{structkey____t}{key\_\_t}} *, \mbox{\hyperlink{structcfg__t}{cfg\_t}} *, uint, flint\_rand\_t);}
+\DoxyCodeLine{24 \mbox{\hyperlink{structkey____t}{key\_\_t}} *keygen\_(\mbox{\hyperlink{structcfg__t}{cfg\_t}} *, uint, flint\_rand\_t);}
+\DoxyCodeLine{25 \textcolor{keywordtype}{void} key\_clear(\mbox{\hyperlink{structkey____t}{key\_\_t}} *);}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27 \textcolor{keywordtype}{void} key\_print(\mbox{\hyperlink{structkey____t}{key\_\_t}} *);}
+\DoxyCodeLine{28 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{29 }
+
+\end{DoxyCode}

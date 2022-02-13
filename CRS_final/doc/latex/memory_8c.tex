@@ -1,0 +1,282 @@
+\hypertarget{memory_8c}{}\doxysection{/home/steaky/git/\+CRS/src/\+Elliptic\+Curves/memory.c File Reference}
+\label{memory_8c}\index{/home/steaky/git/CRS/src/EllipticCurves/memory.c@{/home/steaky/git/CRS/src/EllipticCurves/memory.c}}
+{\ttfamily \#include \char`\"{}memory.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{memory_8c_ad42968f187d44dbb6d560544c1c820cf}{SW\+\_\+curve\+\_\+init}} (\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$E, const fq\+\_\+ctx\+\_\+t $\ast$F)
+\item 
+void \mbox{\hyperlink{memory_8c_a91c3bb16fe26f2cf4bc368d6813a3a96}{SW\+\_\+curve\+\_\+set}} (\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$E, const fq\+\_\+ctx\+\_\+t $\ast$F, const fq\+\_\+t a, const fq\+\_\+t b)
+\item 
+void \mbox{\hyperlink{memory_8c_ac9bda5eb4aef27f6561563817fe5032f}{SW\+\_\+curve\+\_\+set\+\_\+si}} (\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$E, const fq\+\_\+ctx\+\_\+t $\ast$F, const slong a, const slong b)
+\item 
+void \mbox{\hyperlink{memory_8c_a1cf9c9642e876bd50b654dd3f99a0eee}{SW\+\_\+curve\+\_\+set\+\_\+su}} (\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$E, const fq\+\_\+ctx\+\_\+t $\ast$F, const ulong a, const ulong b)
+\item 
+int \mbox{\hyperlink{memory_8c_a0e3bb5bfec0fd97eb43d40ba9b900f27}{SW\+\_\+curve\+\_\+set\+\_\+str}} (\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$E, const fq\+\_\+ctx\+\_\+t $\ast$F, const char $\ast$str\+\_\+a, const char $\ast$str\+\_\+b, int b)
+\item 
+void \mbox{\hyperlink{memory_8c_a2213cae39dbd5c05fc2cf3b439dba8aa}{SW\+\_\+curve\+\_\+clear}} (\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$E)
+\item 
+void \mbox{\hyperlink{memory_8c_a2732a3d560335beaadddd7dd977dca1d}{SW\+\_\+point\+\_\+init}} (\mbox{\hyperlink{struct_s_w__point__t}{SW\+\_\+point\+\_\+t}} $\ast$P, \mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$E)
+\item 
+void \mbox{\hyperlink{memory_8c_a4772a81fdadb26678b63c6fc1d0cd1ca}{SW\+\_\+point\+\_\+set}} (\mbox{\hyperlink{struct_s_w__point__t}{SW\+\_\+point\+\_\+t}} $\ast$P, const fq\+\_\+t x, const fq\+\_\+t y, const fq\+\_\+t z, \mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$E)
+\item 
+void \mbox{\hyperlink{memory_8c_a4909f77621b53e6956adcedcf7f5604f}{SW\+\_\+point\+\_\+set\+\_\+si}} (\mbox{\hyperlink{struct_s_w__point__t}{SW\+\_\+point\+\_\+t}} $\ast$P, const slong x, const slong y, const slong z, \mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$E)
+\item 
+void \mbox{\hyperlink{memory_8c_a92f61c40036a69dc319c78643934df92}{SW\+\_\+point\+\_\+set\+\_\+ui}} (\mbox{\hyperlink{struct_s_w__point__t}{SW\+\_\+point\+\_\+t}} $\ast$P, const ulong x, const ulong y, const ulong z, \mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$E)
+\item 
+void \mbox{\hyperlink{memory_8c_ac7d6e6d5b89fefde3d73c563a9b8ab06}{SW\+\_\+point\+\_\+clear}} (\mbox{\hyperlink{struct_s_w__point__t}{SW\+\_\+point\+\_\+t}} $\ast$P)
+\item 
+void \mbox{\hyperlink{memory_8c_afb4772f943162600b419c7398e1aa95b}{MG\+\_\+curve\+\_\+init}} (\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$E, const fq\+\_\+ctx\+\_\+t $\ast$F)
+\item 
+void \mbox{\hyperlink{memory_8c_a6ccb51c842c864bfb43801e1eeccc292}{MG\+\_\+curve\+\_\+set\+\_\+}} (\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$rop, \mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$op)
+\item 
+void \mbox{\hyperlink{memory_8c_a09ce008feec5f3a986676bd1444a016f}{MG\+\_\+curve\+\_\+set}} (\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$E, const fq\+\_\+ctx\+\_\+t $\ast$F, const fq\+\_\+t A, const fq\+\_\+t B)
+\item 
+void \mbox{\hyperlink{memory_8c_a5def7b7c8346e32c6ca178e8c7a46155}{MG\+\_\+curve\+\_\+set\+\_\+si}} (\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$E, const fq\+\_\+ctx\+\_\+t $\ast$F, const slong A, const slong B)
+\item 
+void \mbox{\hyperlink{memory_8c_a70795cf429f9d23e631d0538250bddb0}{MG\+\_\+curve\+\_\+set\+\_\+ui}} (\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$E, const fq\+\_\+ctx\+\_\+t $\ast$F, const ulong A, const ulong B)
+\item 
+int \mbox{\hyperlink{memory_8c_aecd12f09450c00342bfe3cc1782894ff}{MG\+\_\+curve\+\_\+set\+\_\+str}} (\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$E, const fq\+\_\+ctx\+\_\+t $\ast$F, const char $\ast$str\+\_\+A, const char $\ast$str\+\_\+B, int b)
+\item 
+void \mbox{\hyperlink{memory_8c_ab4b6e982985bb31d368faf0b8a01b028}{MG\+\_\+curve\+\_\+clear}} (\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$E)
+\item 
+void \mbox{\hyperlink{memory_8c_a271d669f77bea3fa219c8b33e8b160a1}{MG\+\_\+point\+\_\+init}} (\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$P, \mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$E)
+\item 
+void \mbox{\hyperlink{memory_8c_a05609d3a1c5c02fc34ca24d91eb1c030}{MG\+\_\+point\+\_\+set}} (\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$P, const fq\+\_\+t X, const fq\+\_\+t Z, \mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$E)
+\item 
+void \mbox{\hyperlink{memory_8c_a8856f2d0a3ac169a5ae286c9342dac94}{MG\+\_\+point\+\_\+set\+\_\+}} (\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$P, \mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$Q)
+\item 
+void \mbox{\hyperlink{memory_8c_a28910c11c9602bda891233ce5c8f7f47}{MG\+\_\+point\+\_\+set\+\_\+si}} (\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$P, const slong X, const slong Z, \mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$E)
+\item 
+void \mbox{\hyperlink{memory_8c_a0889ae92cf7c0e4b2b357ce7f8af2703}{MG\+\_\+point\+\_\+set\+\_\+ui}} (\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$P, const ulong X, const ulong Z, \mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$E)
+\item 
+void \mbox{\hyperlink{memory_8c_aa9102c8868df5d35bee37b2168db33a9}{MG\+\_\+point\+\_\+set\+\_\+fmpz}} (\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$P, const fmpz\+\_\+t X, const fmpz\+\_\+t Z, \mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$E)
+\item 
+void \mbox{\hyperlink{memory_8c_ad2fdaff815986212fefd7ea9238c78d9}{MG\+\_\+point\+\_\+set\+\_\+str}} (\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$P, const char $\ast$X, const char $\ast$Z, \mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$E)
+\item 
+void \mbox{\hyperlink{memory_8c_afe7df92a00da2d06f461e9163ce69c9f}{MG\+\_\+point\+\_\+set\+\_\+infty}} (\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$P)
+\item 
+void \mbox{\hyperlink{memory_8c_a75f3642e35d5737dbce121326f207d34}{MG\+\_\+point\+\_\+clear}} (\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$P)
+\item 
+void \mbox{\hyperlink{memory_8c_a68d9d5a4c32d5fa18a23a808c65500c1}{TN\+\_\+curve\+\_\+init}} (\mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$E, fmpz\+\_\+t l, const fq\+\_\+ctx\+\_\+t $\ast$F)
+\item 
+void \mbox{\hyperlink{memory_8c_aac501c10909000f4b1b93f192a1b9320}{TN\+\_\+curve\+\_\+set}} (\mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$E, const fq\+\_\+t b, const fq\+\_\+t c, fmpz\+\_\+t l, const fq\+\_\+ctx\+\_\+t $\ast$F)
+\item 
+void \mbox{\hyperlink{memory_8c_af34dcc04599f1ce19c5ab813ca72f7ad}{TN\+\_\+curve\+\_\+set\+\_\+}} (\mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$rop, \mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$op)
+\item 
+void \mbox{\hyperlink{memory_8c_a8a6c551b4342042391f3fff003b74dde}{TN\+\_\+curve\+\_\+set\+\_\+si}} (\mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$E, const slong b, const slong c, const slong l, const fq\+\_\+ctx\+\_\+t $\ast$F)
+\item 
+void \mbox{\hyperlink{memory_8c_a9dee607b3315876b00d1c84d4769b65c}{TN\+\_\+curve\+\_\+set\+\_\+ui}} (\mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$E, const ulong b, const ulong c, ulong l, const fq\+\_\+ctx\+\_\+t $\ast$F)
+\item 
+int \mbox{\hyperlink{memory_8c_a5ffa669bfa1e37e0a233ce04ab7f3c92}{TN\+\_\+curve\+\_\+set\+\_\+str}} (\mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$E, const char $\ast$str\+\_\+b, const char $\ast$str\+\_\+c, const char $\ast$str\+\_\+l, int base, const fq\+\_\+ctx\+\_\+t $\ast$F)
+\item 
+void \mbox{\hyperlink{memory_8c_aadf1f0bdc974812c094cd3acec7161f0}{TN\+\_\+curve\+\_\+clear}} (\mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$E)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{memory_8c_ab4b6e982985bb31d368faf0b8a01b028}\label{memory_8c_ab4b6e982985bb31d368faf0b8a01b028}} 
+\index{memory.c@{memory.c}!MG\_curve\_clear@{MG\_curve\_clear}}
+\index{MG\_curve\_clear@{MG\_curve\_clear}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_curve\_clear()}{MG\_curve\_clear()}}
+{\footnotesize\ttfamily void MG\+\_\+curve\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$}]{E }\end{DoxyParamCaption})}
+
+Clears the given curve, releasing any memory used. It must be reinitialised in order to be used again. \mbox{\Hypertarget{memory_8c_afb4772f943162600b419c7398e1aa95b}\label{memory_8c_afb4772f943162600b419c7398e1aa95b}} 
+\index{memory.c@{memory.c}!MG\_curve\_init@{MG\_curve\_init}}
+\index{MG\_curve\_init@{MG\_curve\_init}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_curve\_init()}{MG\_curve\_init()}}
+{\footnotesize\ttfamily void MG\+\_\+curve\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$}]{E,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F }\end{DoxyParamCaption})}
+
+Initializes E for use, with context F, and setting its coefficients to zero. A corresponding call to \mbox{\hyperlink{memory_8c_ab4b6e982985bb31d368faf0b8a01b028}{MG\+\_\+curve\+\_\+clear()}} must be made after finishing with the \mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} to free the memory used by the curve. \mbox{\Hypertarget{memory_8c_a09ce008feec5f3a986676bd1444a016f}\label{memory_8c_a09ce008feec5f3a986676bd1444a016f}} 
+\index{memory.c@{memory.c}!MG\_curve\_set@{MG\_curve\_set}}
+\index{MG\_curve\_set@{MG\_curve\_set}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_curve\_set()}{MG\_curve\_set()}}
+{\footnotesize\ttfamily void MG\+\_\+curve\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$}]{E,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F,  }\item[{const fq\+\_\+t}]{A,  }\item[{const fq\+\_\+t}]{B }\end{DoxyParamCaption})}
+
+Sets E to elliptic curve over F in Montgomery form with coefficients A and B. Curve parameters are given as elements of F. \mbox{\Hypertarget{memory_8c_a6ccb51c842c864bfb43801e1eeccc292}\label{memory_8c_a6ccb51c842c864bfb43801e1eeccc292}} 
+\index{memory.c@{memory.c}!MG\_curve\_set\_@{MG\_curve\_set\_}}
+\index{MG\_curve\_set\_@{MG\_curve\_set\_}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_curve\_set\_()}{MG\_curve\_set\_()}}
+{\footnotesize\ttfamily void MG\+\_\+curve\+\_\+set\+\_\+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$}]{rop,  }\item[{\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$}]{op }\end{DoxyParamCaption})}
+
+Sets elliptic curve rop in Montgomery form to curve op. This is aking to a deep copy. rop must be initialized. \mbox{\Hypertarget{memory_8c_a5def7b7c8346e32c6ca178e8c7a46155}\label{memory_8c_a5def7b7c8346e32c6ca178e8c7a46155}} 
+\index{memory.c@{memory.c}!MG\_curve\_set\_si@{MG\_curve\_set\_si}}
+\index{MG\_curve\_set\_si@{MG\_curve\_set\_si}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_curve\_set\_si()}{MG\_curve\_set\_si()}}
+{\footnotesize\ttfamily void MG\+\_\+curve\+\_\+set\+\_\+si (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$}]{E,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F,  }\item[{const slong}]{A,  }\item[{const slong}]{B }\end{DoxyParamCaption})}
+
+See \mbox{\hyperlink{memory_8c_a09ce008feec5f3a986676bd1444a016f}{MG\+\_\+curve\+\_\+set()}}. Curve coefficients are given as signed integers. \mbox{\Hypertarget{memory_8c_aecd12f09450c00342bfe3cc1782894ff}\label{memory_8c_aecd12f09450c00342bfe3cc1782894ff}} 
+\index{memory.c@{memory.c}!MG\_curve\_set\_str@{MG\_curve\_set\_str}}
+\index{MG\_curve\_set\_str@{MG\_curve\_set\_str}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_curve\_set\_str()}{MG\_curve\_set\_str()}}
+{\footnotesize\ttfamily int MG\+\_\+curve\+\_\+set\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$}]{E,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F,  }\item[{const char $\ast$}]{str\+\_\+A,  }\item[{const char $\ast$}]{str\+\_\+B,  }\item[{int}]{b }\end{DoxyParamCaption})}
+
+See \mbox{\hyperlink{memory_8c_a09ce008feec5f3a986676bd1444a016f}{MG\+\_\+curve\+\_\+set()}}. Parameters are given as null-\/terminated strings, in base b. The base b can vary between 2 and 62, inclusive. Returns 0 if the string contain valid inputs and −1 otherwise. \mbox{\Hypertarget{memory_8c_a70795cf429f9d23e631d0538250bddb0}\label{memory_8c_a70795cf429f9d23e631d0538250bddb0}} 
+\index{memory.c@{memory.c}!MG\_curve\_set\_ui@{MG\_curve\_set\_ui}}
+\index{MG\_curve\_set\_ui@{MG\_curve\_set\_ui}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_curve\_set\_ui()}{MG\_curve\_set\_ui()}}
+{\footnotesize\ttfamily void MG\+\_\+curve\+\_\+set\+\_\+ui (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$}]{E,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F,  }\item[{const ulong}]{A,  }\item[{const ulong}]{B }\end{DoxyParamCaption})}
+
+See \mbox{\hyperlink{memory_8c_a09ce008feec5f3a986676bd1444a016f}{MG\+\_\+curve\+\_\+set()}}. Curve coefficients are given as unsigned integers. \mbox{\Hypertarget{memory_8c_a75f3642e35d5737dbce121326f207d34}\label{memory_8c_a75f3642e35d5737dbce121326f207d34}} 
+\index{memory.c@{memory.c}!MG\_point\_clear@{MG\_point\_clear}}
+\index{MG\_point\_clear@{MG\_point\_clear}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_point\_clear()}{MG\_point\_clear()}}
+{\footnotesize\ttfamily void MG\+\_\+point\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$}]{P }\end{DoxyParamCaption})}
+
+Clears the given point, releasing anZ memorZ used. It must be reinitialised in order to be used again. \mbox{\Hypertarget{memory_8c_a271d669f77bea3fa219c8b33e8b160a1}\label{memory_8c_a271d669f77bea3fa219c8b33e8b160a1}} 
+\index{memory.c@{memory.c}!MG\_point\_init@{MG\_point\_init}}
+\index{MG\_point\_init@{MG\_point\_init}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_point\_init()}{MG\_point\_init()}}
+{\footnotesize\ttfamily void MG\+\_\+point\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$}]{P,  }\item[{\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$}]{E }\end{DoxyParamCaption})}
+
+Initializes P for use, with context F, and setting its coefficients to zero. A corresponding call to \mbox{\hyperlink{memory_8c_ac7d6e6d5b89fefde3d73c563a9b8ab06}{SW\+\_\+point\+\_\+clear()}} must be made after finishing with the \mbox{\hyperlink{struct_s_w__point__t}{SW\+\_\+point\+\_\+t}} to free the memorZ used bZ the curve. TODO\+: swap F for E in parameters. A point is member of E not of F. \mbox{\Hypertarget{memory_8c_a05609d3a1c5c02fc34ca24d91eb1c030}\label{memory_8c_a05609d3a1c5c02fc34ca24d91eb1c030}} 
+\index{memory.c@{memory.c}!MG\_point\_set@{MG\_point\_set}}
+\index{MG\_point\_set@{MG\_point\_set}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_point\_set()}{MG\_point\_set()}}
+{\footnotesize\ttfamily void MG\+\_\+point\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$}]{P,  }\item[{const fq\+\_\+t}]{X,  }\item[{const fq\+\_\+t}]{Z,  }\item[{\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$}]{E }\end{DoxyParamCaption})}
+
+Sets P to point of elliptic curve E with coordinates X, Z, z. Point parameters are given as elements of F. TODO\+: Check if P and E\textquotesingle{}s fields are correct \mbox{\Hypertarget{memory_8c_a8856f2d0a3ac169a5ae286c9342dac94}\label{memory_8c_a8856f2d0a3ac169a5ae286c9342dac94}} 
+\index{memory.c@{memory.c}!MG\_point\_set\_@{MG\_point\_set\_}}
+\index{MG\_point\_set\_@{MG\_point\_set\_}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_point\_set\_()}{MG\_point\_set\_()}}
+{\footnotesize\ttfamily void MG\+\_\+point\+\_\+set\+\_\+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$}]{P,  }\item[{\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$}]{Q }\end{DoxyParamCaption})}
+
+Sets P to the same point as Q. \mbox{\Hypertarget{memory_8c_aa9102c8868df5d35bee37b2168db33a9}\label{memory_8c_aa9102c8868df5d35bee37b2168db33a9}} 
+\index{memory.c@{memory.c}!MG\_point\_set\_fmpz@{MG\_point\_set\_fmpz}}
+\index{MG\_point\_set\_fmpz@{MG\_point\_set\_fmpz}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_point\_set\_fmpz()}{MG\_point\_set\_fmpz()}}
+{\footnotesize\ttfamily void MG\+\_\+point\+\_\+set\+\_\+fmpz (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$}]{P,  }\item[{const fmpz\+\_\+t}]{X,  }\item[{const fmpz\+\_\+t}]{Z,  }\item[{\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$}]{E }\end{DoxyParamCaption})}
+
+See \mbox{\hyperlink{memory_8c_a05609d3a1c5c02fc34ca24d91eb1c030}{MG\+\_\+point\+\_\+set()}}. Point coordinates are given as strings of integers. \mbox{\Hypertarget{memory_8c_afe7df92a00da2d06f461e9163ce69c9f}\label{memory_8c_afe7df92a00da2d06f461e9163ce69c9f}} 
+\index{memory.c@{memory.c}!MG\_point\_set\_infty@{MG\_point\_set\_infty}}
+\index{MG\_point\_set\_infty@{MG\_point\_set\_infty}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_point\_set\_infty()}{MG\_point\_set\_infty()}}
+{\footnotesize\ttfamily void MG\+\_\+point\+\_\+set\+\_\+infty (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$}]{P }\end{DoxyParamCaption})}
+
+Sets P to the point at infinity on the underlying curve. \mbox{\Hypertarget{memory_8c_a28910c11c9602bda891233ce5c8f7f47}\label{memory_8c_a28910c11c9602bda891233ce5c8f7f47}} 
+\index{memory.c@{memory.c}!MG\_point\_set\_si@{MG\_point\_set\_si}}
+\index{MG\_point\_set\_si@{MG\_point\_set\_si}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_point\_set\_si()}{MG\_point\_set\_si()}}
+{\footnotesize\ttfamily void MG\+\_\+point\+\_\+set\+\_\+si (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$}]{P,  }\item[{const slong}]{X,  }\item[{const slong}]{Z,  }\item[{\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$}]{E }\end{DoxyParamCaption})}
+
+See \mbox{\hyperlink{memory_8c_a05609d3a1c5c02fc34ca24d91eb1c030}{MG\+\_\+point\+\_\+set()}}. Point coordinates are given as signed integers. \mbox{\Hypertarget{memory_8c_ad2fdaff815986212fefd7ea9238c78d9}\label{memory_8c_ad2fdaff815986212fefd7ea9238c78d9}} 
+\index{memory.c@{memory.c}!MG\_point\_set\_str@{MG\_point\_set\_str}}
+\index{MG\_point\_set\_str@{MG\_point\_set\_str}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_point\_set\_str()}{MG\_point\_set\_str()}}
+{\footnotesize\ttfamily void MG\+\_\+point\+\_\+set\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$}]{P,  }\item[{const char $\ast$}]{X,  }\item[{const char $\ast$}]{Z,  }\item[{\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$}]{E }\end{DoxyParamCaption})}
+
+See \mbox{\hyperlink{memory_8c_a05609d3a1c5c02fc34ca24d91eb1c030}{MG\+\_\+point\+\_\+set()}}. Point coordinates are given as strings of integers. \mbox{\Hypertarget{memory_8c_a0889ae92cf7c0e4b2b357ce7f8af2703}\label{memory_8c_a0889ae92cf7c0e4b2b357ce7f8af2703}} 
+\index{memory.c@{memory.c}!MG\_point\_set\_ui@{MG\_point\_set\_ui}}
+\index{MG\_point\_set\_ui@{MG\_point\_set\_ui}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{MG\_point\_set\_ui()}{MG\_point\_set\_ui()}}
+{\footnotesize\ttfamily void MG\+\_\+point\+\_\+set\+\_\+ui (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_m_g__point__t}{MG\+\_\+point\+\_\+t}} $\ast$}]{P,  }\item[{const ulong}]{X,  }\item[{const ulong}]{Z,  }\item[{\mbox{\hyperlink{struct_m_g__curve__t}{MG\+\_\+curve\+\_\+t}} $\ast$}]{E }\end{DoxyParamCaption})}
+
+See \mbox{\hyperlink{memory_8c_a05609d3a1c5c02fc34ca24d91eb1c030}{MG\+\_\+point\+\_\+set()}}. Point coordinates are given as unsigned integers. \mbox{\Hypertarget{memory_8c_a2213cae39dbd5c05fc2cf3b439dba8aa}\label{memory_8c_a2213cae39dbd5c05fc2cf3b439dba8aa}} 
+\index{memory.c@{memory.c}!SW\_curve\_clear@{SW\_curve\_clear}}
+\index{SW\_curve\_clear@{SW\_curve\_clear}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{SW\_curve\_clear()}{SW\_curve\_clear()}}
+{\footnotesize\ttfamily void SW\+\_\+curve\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$}]{E }\end{DoxyParamCaption})}
+
+Clears the given curve, releasing any memory used. It must be reinitialised in order to be used again. \mbox{\Hypertarget{memory_8c_ad42968f187d44dbb6d560544c1c820cf}\label{memory_8c_ad42968f187d44dbb6d560544c1c820cf}} 
+\index{memory.c@{memory.c}!SW\_curve\_init@{SW\_curve\_init}}
+\index{SW\_curve\_init@{SW\_curve\_init}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{SW\_curve\_init()}{SW\_curve\_init()}}
+{\footnotesize\ttfamily void SW\+\_\+curve\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$}]{E,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F }\end{DoxyParamCaption})}
+
+Initializes E for use, with context F, and setting its coefficients to zero. A corresponding call to \mbox{\hyperlink{memory_8c_a2213cae39dbd5c05fc2cf3b439dba8aa}{SW\+\_\+curve\+\_\+clear()}} must be made after finishing with the \mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} to free the memory used by the curve. \mbox{\Hypertarget{memory_8c_a91c3bb16fe26f2cf4bc368d6813a3a96}\label{memory_8c_a91c3bb16fe26f2cf4bc368d6813a3a96}} 
+\index{memory.c@{memory.c}!SW\_curve\_set@{SW\_curve\_set}}
+\index{SW\_curve\_set@{SW\_curve\_set}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{SW\_curve\_set()}{SW\_curve\_set()}}
+{\footnotesize\ttfamily void SW\+\_\+curve\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$}]{E,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F,  }\item[{const fq\+\_\+t}]{a,  }\item[{const fq\+\_\+t}]{b }\end{DoxyParamCaption})}
+
+Sets E to elliptic curve over F in Weierstrass form with coefficients a and b. Curve parameters are given as elements of F. \mbox{\Hypertarget{memory_8c_ac9bda5eb4aef27f6561563817fe5032f}\label{memory_8c_ac9bda5eb4aef27f6561563817fe5032f}} 
+\index{memory.c@{memory.c}!SW\_curve\_set\_si@{SW\_curve\_set\_si}}
+\index{SW\_curve\_set\_si@{SW\_curve\_set\_si}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{SW\_curve\_set\_si()}{SW\_curve\_set\_si()}}
+{\footnotesize\ttfamily void SW\+\_\+curve\+\_\+set\+\_\+si (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$}]{E,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F,  }\item[{const slong}]{a,  }\item[{const slong}]{b }\end{DoxyParamCaption})}
+
+See \mbox{\hyperlink{memory_8c_a91c3bb16fe26f2cf4bc368d6813a3a96}{SW\+\_\+curve\+\_\+set()}}. Curve coefficients are given as signed integers. \mbox{\Hypertarget{memory_8c_a0e3bb5bfec0fd97eb43d40ba9b900f27}\label{memory_8c_a0e3bb5bfec0fd97eb43d40ba9b900f27}} 
+\index{memory.c@{memory.c}!SW\_curve\_set\_str@{SW\_curve\_set\_str}}
+\index{SW\_curve\_set\_str@{SW\_curve\_set\_str}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{SW\_curve\_set\_str()}{SW\_curve\_set\_str()}}
+{\footnotesize\ttfamily int SW\+\_\+curve\+\_\+set\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$}]{E,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F,  }\item[{const char $\ast$}]{str\+\_\+a,  }\item[{const char $\ast$}]{str\+\_\+b,  }\item[{int}]{b }\end{DoxyParamCaption})}
+
+See \mbox{\hyperlink{memory_8c_a91c3bb16fe26f2cf4bc368d6813a3a96}{SW\+\_\+curve\+\_\+set()}}. Parameters are given as null-\/terminated strings, in base b. The base b can vary between 2 and 62, inclusive. Returns 0 if the string contain valid inputs and −1 otherwise. \mbox{\Hypertarget{memory_8c_a1cf9c9642e876bd50b654dd3f99a0eee}\label{memory_8c_a1cf9c9642e876bd50b654dd3f99a0eee}} 
+\index{memory.c@{memory.c}!SW\_curve\_set\_su@{SW\_curve\_set\_su}}
+\index{SW\_curve\_set\_su@{SW\_curve\_set\_su}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{SW\_curve\_set\_su()}{SW\_curve\_set\_su()}}
+{\footnotesize\ttfamily void SW\+\_\+curve\+\_\+set\+\_\+su (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$}]{E,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F,  }\item[{const ulong}]{a,  }\item[{const ulong}]{b }\end{DoxyParamCaption})}
+
+See \mbox{\hyperlink{memory_8c_a91c3bb16fe26f2cf4bc368d6813a3a96}{SW\+\_\+curve\+\_\+set()}}. Curve coefficients are given as unsigned integers. \mbox{\Hypertarget{memory_8c_ac7d6e6d5b89fefde3d73c563a9b8ab06}\label{memory_8c_ac7d6e6d5b89fefde3d73c563a9b8ab06}} 
+\index{memory.c@{memory.c}!SW\_point\_clear@{SW\_point\_clear}}
+\index{SW\_point\_clear@{SW\_point\_clear}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{SW\_point\_clear()}{SW\_point\_clear()}}
+{\footnotesize\ttfamily void SW\+\_\+point\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_s_w__point__t}{SW\+\_\+point\+\_\+t}} $\ast$}]{P }\end{DoxyParamCaption})}
+
+Clears the given point, releasing any memory used. It must be reinitialised in order to be used again. \mbox{\Hypertarget{memory_8c_a2732a3d560335beaadddd7dd977dca1d}\label{memory_8c_a2732a3d560335beaadddd7dd977dca1d}} 
+\index{memory.c@{memory.c}!SW\_point\_init@{SW\_point\_init}}
+\index{SW\_point\_init@{SW\_point\_init}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{SW\_point\_init()}{SW\_point\_init()}}
+{\footnotesize\ttfamily void SW\+\_\+point\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_s_w__point__t}{SW\+\_\+point\+\_\+t}} $\ast$}]{P,  }\item[{\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$}]{E }\end{DoxyParamCaption})}
+
+Initializes P for use, with context F, and setting its coefficients to zero. A corresponding call to \mbox{\hyperlink{memory_8c_ac7d6e6d5b89fefde3d73c563a9b8ab06}{SW\+\_\+point\+\_\+clear()}} must be made after finishing with the \mbox{\hyperlink{struct_s_w__point__t}{SW\+\_\+point\+\_\+t}} to free the memory used by the curve. TODO\+: swap F for E in parameters. A point is member of E not of F. \mbox{\Hypertarget{memory_8c_a4772a81fdadb26678b63c6fc1d0cd1ca}\label{memory_8c_a4772a81fdadb26678b63c6fc1d0cd1ca}} 
+\index{memory.c@{memory.c}!SW\_point\_set@{SW\_point\_set}}
+\index{SW\_point\_set@{SW\_point\_set}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{SW\_point\_set()}{SW\_point\_set()}}
+{\footnotesize\ttfamily void SW\+\_\+point\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_s_w__point__t}{SW\+\_\+point\+\_\+t}} $\ast$}]{P,  }\item[{const fq\+\_\+t}]{x,  }\item[{const fq\+\_\+t}]{y,  }\item[{const fq\+\_\+t}]{z,  }\item[{\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$}]{E }\end{DoxyParamCaption})}
+
+Sets P to point of elliptic curve E with coordinates x, y, z. Point parameters are given as elements of F. TODO\+: Check if P and E\textquotesingle{}s fields are correct \mbox{\Hypertarget{memory_8c_a4909f77621b53e6956adcedcf7f5604f}\label{memory_8c_a4909f77621b53e6956adcedcf7f5604f}} 
+\index{memory.c@{memory.c}!SW\_point\_set\_si@{SW\_point\_set\_si}}
+\index{SW\_point\_set\_si@{SW\_point\_set\_si}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{SW\_point\_set\_si()}{SW\_point\_set\_si()}}
+{\footnotesize\ttfamily void SW\+\_\+point\+\_\+set\+\_\+si (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_s_w__point__t}{SW\+\_\+point\+\_\+t}} $\ast$}]{P,  }\item[{const slong}]{x,  }\item[{const slong}]{y,  }\item[{const slong}]{z,  }\item[{\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$}]{E }\end{DoxyParamCaption})}
+
+See \mbox{\hyperlink{memory_8c_a4772a81fdadb26678b63c6fc1d0cd1ca}{SW\+\_\+point\+\_\+set()}}. Point coordinates are given as signed integers. \mbox{\Hypertarget{memory_8c_a92f61c40036a69dc319c78643934df92}\label{memory_8c_a92f61c40036a69dc319c78643934df92}} 
+\index{memory.c@{memory.c}!SW\_point\_set\_ui@{SW\_point\_set\_ui}}
+\index{SW\_point\_set\_ui@{SW\_point\_set\_ui}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{SW\_point\_set\_ui()}{SW\_point\_set\_ui()}}
+{\footnotesize\ttfamily void SW\+\_\+point\+\_\+set\+\_\+ui (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_s_w__point__t}{SW\+\_\+point\+\_\+t}} $\ast$}]{P,  }\item[{const ulong}]{x,  }\item[{const ulong}]{y,  }\item[{const ulong}]{z,  }\item[{\mbox{\hyperlink{struct_s_w__curve__t}{SW\+\_\+curve\+\_\+t}} $\ast$}]{E }\end{DoxyParamCaption})}
+
+See \mbox{\hyperlink{memory_8c_a4772a81fdadb26678b63c6fc1d0cd1ca}{SW\+\_\+point\+\_\+set()}}. Point coordinates are given as unsigned integers. \mbox{\Hypertarget{memory_8c_aadf1f0bdc974812c094cd3acec7161f0}\label{memory_8c_aadf1f0bdc974812c094cd3acec7161f0}} 
+\index{memory.c@{memory.c}!TN\_curve\_clear@{TN\_curve\_clear}}
+\index{TN\_curve\_clear@{TN\_curve\_clear}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{TN\_curve\_clear()}{TN\_curve\_clear()}}
+{\footnotesize\ttfamily void TN\+\_\+curve\+\_\+clear (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$}]{E }\end{DoxyParamCaption})}
+
+Clears the given curve, releasing any memory used. It must be reinitialised in order to be used again. \mbox{\Hypertarget{memory_8c_a68d9d5a4c32d5fa18a23a808c65500c1}\label{memory_8c_a68d9d5a4c32d5fa18a23a808c65500c1}} 
+\index{memory.c@{memory.c}!TN\_curve\_init@{TN\_curve\_init}}
+\index{TN\_curve\_init@{TN\_curve\_init}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{TN\_curve\_init()}{TN\_curve\_init()}}
+{\footnotesize\ttfamily void TN\+\_\+curve\+\_\+init (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$}]{E,  }\item[{fmpz\+\_\+t}]{l,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F }\end{DoxyParamCaption})}
+
+Initializes E for use, with context F, and setting its coefficients to zero. A corresponding call to \mbox{\hyperlink{memory_8c_aadf1f0bdc974812c094cd3acec7161f0}{TN\+\_\+curve\+\_\+clear()}} must be made after finishing with the \mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} to free the memory used by the curve. \mbox{\Hypertarget{memory_8c_aac501c10909000f4b1b93f192a1b9320}\label{memory_8c_aac501c10909000f4b1b93f192a1b9320}} 
+\index{memory.c@{memory.c}!TN\_curve\_set@{TN\_curve\_set}}
+\index{TN\_curve\_set@{TN\_curve\_set}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{TN\_curve\_set()}{TN\_curve\_set()}}
+{\footnotesize\ttfamily void TN\+\_\+curve\+\_\+set (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$}]{E,  }\item[{const fq\+\_\+t}]{b,  }\item[{const fq\+\_\+t}]{c,  }\item[{fmpz\+\_\+t}]{l,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F }\end{DoxyParamCaption})}
+
+Sets E to elliptic curve over F in Tate-\/normal form with coefficients A and B. Curve parameters are given as elements of F. \mbox{\Hypertarget{memory_8c_af34dcc04599f1ce19c5ab813ca72f7ad}\label{memory_8c_af34dcc04599f1ce19c5ab813ca72f7ad}} 
+\index{memory.c@{memory.c}!TN\_curve\_set\_@{TN\_curve\_set\_}}
+\index{TN\_curve\_set\_@{TN\_curve\_set\_}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{TN\_curve\_set\_()}{TN\_curve\_set\_()}}
+{\footnotesize\ttfamily void TN\+\_\+curve\+\_\+set\+\_\+ (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$}]{rop,  }\item[{\mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$}]{op }\end{DoxyParamCaption})}
+
+Deep copy \mbox{\Hypertarget{memory_8c_a8a6c551b4342042391f3fff003b74dde}\label{memory_8c_a8a6c551b4342042391f3fff003b74dde}} 
+\index{memory.c@{memory.c}!TN\_curve\_set\_si@{TN\_curve\_set\_si}}
+\index{TN\_curve\_set\_si@{TN\_curve\_set\_si}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{TN\_curve\_set\_si()}{TN\_curve\_set\_si()}}
+{\footnotesize\ttfamily void TN\+\_\+curve\+\_\+set\+\_\+si (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$}]{E,  }\item[{const slong}]{b,  }\item[{const slong}]{c,  }\item[{const slong}]{l,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F }\end{DoxyParamCaption})}
+
+See \mbox{\hyperlink{memory_8c_aac501c10909000f4b1b93f192a1b9320}{TN\+\_\+curve\+\_\+set()}}. Curve coefficients are given as signed integers. \mbox{\Hypertarget{memory_8c_a5ffa669bfa1e37e0a233ce04ab7f3c92}\label{memory_8c_a5ffa669bfa1e37e0a233ce04ab7f3c92}} 
+\index{memory.c@{memory.c}!TN\_curve\_set\_str@{TN\_curve\_set\_str}}
+\index{TN\_curve\_set\_str@{TN\_curve\_set\_str}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{TN\_curve\_set\_str()}{TN\_curve\_set\_str()}}
+{\footnotesize\ttfamily int TN\+\_\+curve\+\_\+set\+\_\+str (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$}]{E,  }\item[{const char $\ast$}]{str\+\_\+b,  }\item[{const char $\ast$}]{str\+\_\+c,  }\item[{const char $\ast$}]{str\+\_\+l,  }\item[{int}]{base,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F }\end{DoxyParamCaption})}
+
+See \mbox{\hyperlink{memory_8c_aac501c10909000f4b1b93f192a1b9320}{TN\+\_\+curve\+\_\+set()}}. Parameters are given as null-\/terminated strings, in base b. The base b can vary between 2 and 62, inclusive. Returns 0 if the string contain valid inputs and −1 otherwise. \mbox{\Hypertarget{memory_8c_a9dee607b3315876b00d1c84d4769b65c}\label{memory_8c_a9dee607b3315876b00d1c84d4769b65c}} 
+\index{memory.c@{memory.c}!TN\_curve\_set\_ui@{TN\_curve\_set\_ui}}
+\index{TN\_curve\_set\_ui@{TN\_curve\_set\_ui}!memory.c@{memory.c}}
+\doxysubsubsection{\texorpdfstring{TN\_curve\_set\_ui()}{TN\_curve\_set\_ui()}}
+{\footnotesize\ttfamily void TN\+\_\+curve\+\_\+set\+\_\+ui (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{struct_t_n__curve__t}{TN\+\_\+curve\+\_\+t}} $\ast$}]{E,  }\item[{const ulong}]{b,  }\item[{const ulong}]{c,  }\item[{ulong}]{l,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F }\end{DoxyParamCaption})}
+
+See \mbox{\hyperlink{memory_8c_aac501c10909000f4b1b93f192a1b9320}{TN\+\_\+curve\+\_\+set()}}. Curve coefficients are given as unsigned integers. 

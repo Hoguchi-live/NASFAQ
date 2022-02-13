@@ -1,0 +1,79 @@
+\hypertarget{memory_8h_source}{}\doxysection{memory.\+h}
+\label{memory_8h_source}\index{/home/steaky/git/CRS/src/EllipticCurves/memory.h@{/home/steaky/git/CRS/src/EllipticCurves/memory.h}}
+\mbox{\hyperlink{memory_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 }
+\DoxyCodeLine{2 \textcolor{preprocessor}{\#ifndef \_MEMORY\_H\_}}
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define \_MEMORY\_H\_}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <string.h>}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <gmp.h>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <flint/fmpz.h>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <flint/fq.h>}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}models.h"{}}}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{comment}{/*********************************************}}
+\DoxyCodeLine{15 \textcolor{comment}{   Short Weierstrass curves memory management}}
+\DoxyCodeLine{16 \textcolor{comment}{*********************************************/}}
+\DoxyCodeLine{17 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a4b4aa3baa653baee5351c7cf128da7bf}{SW\_curve\_init}}(\mbox{\hyperlink{struct_s_w__curve__t}{SW\_curve\_t}} *, \textcolor{keyword}{const} fq\_ctx\_t *);}
+\DoxyCodeLine{18 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_aee1d5d67980f8b438c78ab2e77c529ce}{SW\_curve\_set}}(\mbox{\hyperlink{struct_s_w__curve__t}{SW\_curve\_t}} *, \textcolor{keyword}{const} fq\_ctx\_t *, \textcolor{keyword}{const} fq\_t, \textcolor{keyword}{const} fq\_t);}
+\DoxyCodeLine{19 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a83e0ae31c880acac9962608c30fb7216}{SW\_curve\_set\_si}}(\mbox{\hyperlink{struct_s_w__curve__t}{SW\_curve\_t}} *, \textcolor{keyword}{const} fq\_ctx\_t *, \textcolor{keyword}{const} slong, \textcolor{keyword}{const} slong);}
+\DoxyCodeLine{20 \textcolor{keywordtype}{void} SW\_curve\_set\_ui(\mbox{\hyperlink{struct_s_w__curve__t}{SW\_curve\_t}} *, \textcolor{keyword}{const} fq\_ctx\_t *, \textcolor{keyword}{const} ulong, \textcolor{keyword}{const} ulong);}
+\DoxyCodeLine{21 \textcolor{keywordtype}{int} \mbox{\hyperlink{memory_8h_a5828d247629ff5d29d3eb1e6cc15538d}{SW\_curve\_set\_str}}(\mbox{\hyperlink{struct_s_w__curve__t}{SW\_curve\_t}} *, \textcolor{keyword}{const} fq\_ctx\_t *, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \textcolor{keywordtype}{int});}
+\DoxyCodeLine{22 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a5a8fa1d26d156daf60cb72e0b9addc3a}{SW\_curve\_clear}}(\mbox{\hyperlink{struct_s_w__curve__t}{SW\_curve\_t}} *);}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25 \textcolor{comment}{/*********************************************}}
+\DoxyCodeLine{26 \textcolor{comment}{   Short Weierstrass points memory management}}
+\DoxyCodeLine{27 \textcolor{comment}{*********************************************/}}
+\DoxyCodeLine{28 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a7c945e01088f7e93d624a3c2750cfebd}{SW\_point\_init}}(\mbox{\hyperlink{struct_s_w__point__t}{SW\_point\_t}} *, \mbox{\hyperlink{struct_s_w__curve__t}{SW\_curve\_t}} *);}
+\DoxyCodeLine{29 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a9925def23d57dae4a74443af34fbfe26}{SW\_point\_set}}(\mbox{\hyperlink{struct_s_w__point__t}{SW\_point\_t}} *, \textcolor{keyword}{const} fq\_t, \textcolor{keyword}{const} fq\_t, \textcolor{keyword}{const} fq\_t, \mbox{\hyperlink{struct_s_w__curve__t}{SW\_curve\_t}} *);}
+\DoxyCodeLine{30 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a5ee96c20627b683fa5aba036e53b2698}{SW\_point\_set\_si}}(\mbox{\hyperlink{struct_s_w__point__t}{SW\_point\_t}} *, \textcolor{keyword}{const} slong, \textcolor{keyword}{const} slong, \textcolor{keyword}{const} slong, \mbox{\hyperlink{struct_s_w__curve__t}{SW\_curve\_t}} *);}
+\DoxyCodeLine{31 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a61ffaa712077baee5e2bcd28782374f6}{SW\_point\_set\_ui}}(\mbox{\hyperlink{struct_s_w__point__t}{SW\_point\_t}} *, \textcolor{keyword}{const} ulong, \textcolor{keyword}{const} ulong, \textcolor{keyword}{const} ulong, \mbox{\hyperlink{struct_s_w__curve__t}{SW\_curve\_t}} *);}
+\DoxyCodeLine{32 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a3e6db86d35bc8a6f1c8a662578de04d0}{SW\_point\_clear}}(\mbox{\hyperlink{struct_s_w__point__t}{SW\_point\_t}} *);}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \textcolor{comment}{/**************************************}}
+\DoxyCodeLine{36 \textcolor{comment}{   Montgomery curves memory management}}
+\DoxyCodeLine{37 \textcolor{comment}{**************************************/}}
+\DoxyCodeLine{38 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a2c0f92fa376c013c75a0b4b56bb26cae}{MG\_curve\_init}}(\mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *, \textcolor{keyword}{const} fq\_ctx\_t *);}
+\DoxyCodeLine{39 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a3775ffeba25a41b3f2b576798ee9f731}{MG\_curve\_set}}(\mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *, \textcolor{keyword}{const} fq\_ctx\_t *, \textcolor{keyword}{const} fq\_t, \textcolor{keyword}{const} fq\_t); \textcolor{comment}{// WRONG SYNTAX}}
+\DoxyCodeLine{40 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a858f8bc0dc2f78c27d02a0b73e94d9d8}{MG\_curve\_set\_}}(\mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *, \mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *); \textcolor{comment}{// USE THIS}}
+\DoxyCodeLine{41 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_aaae830fb5e5e7dc3e47a38f1a4e45074}{MG\_curve\_set\_si}}(\mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *, \textcolor{keyword}{const} fq\_ctx\_t *, \textcolor{keyword}{const} slong, \textcolor{keyword}{const} slong);}
+\DoxyCodeLine{42 \textcolor{keywordtype}{int} \mbox{\hyperlink{memory_8h_adbc5e6487c6f44f2e23bca5df1b5981e}{MG\_curve\_set\_str}}(\mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *, \textcolor{keyword}{const} fq\_ctx\_t *, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \textcolor{keywordtype}{int});}
+\DoxyCodeLine{43 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_ad38597a69c5b4d8e9507219466641c89}{MG\_curve\_clear}}(\mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{comment}{/*********************************************}}
+\DoxyCodeLine{47 \textcolor{comment}{   Montgomery points memory management}}
+\DoxyCodeLine{48 \textcolor{comment}{*********************************************/}}
+\DoxyCodeLine{49 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_ac617221cc86625b2c2ca6ec9f2519ef5}{MG\_point\_init}}(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, \mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a9701b7cfd2051247bdb4fb754128988d}{MG\_point\_set}}(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, \textcolor{keyword}{const} fq\_t, \textcolor{keyword}{const} fq\_t, \mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *);}
+\DoxyCodeLine{52 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a7dd1575d7a94950cbd53e1a0a34d2ba4}{MG\_point\_set\_}}(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, \mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *);}
+\DoxyCodeLine{53 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a05d4db157967ac8be57769d879ed38d9}{MG\_point\_set\_si}}(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, \textcolor{keyword}{const} slong, \textcolor{keyword}{const} slong, \mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *);}
+\DoxyCodeLine{54 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a2410e3435294ea21546dec0e7a363a27}{MG\_point\_set\_ui}}(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, \textcolor{keyword}{const} ulong, \textcolor{keyword}{const} ulong, \mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *);}
+\DoxyCodeLine{55 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a4ed4e345abcc5a9e11652ae369bbc5b5}{MG\_point\_set\_fmpz}}(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, \textcolor{keyword}{const} fmpz\_t, \textcolor{keyword}{const} fmpz\_t, \mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *);}
+\DoxyCodeLine{56 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_ae05e20b8b3f2e1502939eeb5df5b3133}{MG\_point\_set\_str}}(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \mbox{\hyperlink{struct_m_g__curve__t}{MG\_curve\_t}} *);}
+\DoxyCodeLine{57 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_ad27b7721691975ec41eaf6d8c560dac6}{MG\_point\_set\_infty}}(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *);}
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_abd1a18ee1600054dd90271dce22c75a3}{MG\_point\_clear}}(\mbox{\hyperlink{struct_m_g__point__t}{MG\_point\_t}} *);}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62 \textcolor{comment}{/**************************************}}
+\DoxyCodeLine{63 \textcolor{comment}{   Tate-\/normal curves memory management}}
+\DoxyCodeLine{64 \textcolor{comment}{**************************************/}}
+\DoxyCodeLine{65 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a55186bacf8c7fc179ed86e971ac2120c}{TN\_curve\_init}}(\mbox{\hyperlink{struct_t_n__curve__t}{TN\_curve\_t}} *, fmpz\_t, \textcolor{keyword}{const} fq\_ctx\_t *);}
+\DoxyCodeLine{66 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a2eec642fd3ca523fb70ab8f98742078b}{TN\_curve\_set}}(\mbox{\hyperlink{struct_t_n__curve__t}{TN\_curve\_t}} *,  \textcolor{keyword}{const} fq\_t, \textcolor{keyword}{const} fq\_t, fmpz\_t, \textcolor{keyword}{const} fq\_ctx\_t *);}
+\DoxyCodeLine{67 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a6ddc2c361803d79cfa9b2b14966faf66}{TN\_curve\_set\_}}(\mbox{\hyperlink{struct_t_n__curve__t}{TN\_curve\_t}} *,  \mbox{\hyperlink{struct_t_n__curve__t}{TN\_curve\_t}} *);}
+\DoxyCodeLine{68 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a47bee04961056e7a659afe9508e82de4}{TN\_curve\_set\_si}}(\mbox{\hyperlink{struct_t_n__curve__t}{TN\_curve\_t}} *, \textcolor{keyword}{const} slong, \textcolor{keyword}{const} slong, \textcolor{keyword}{const} slong, \textcolor{keyword}{const} fq\_ctx\_t *);}
+\DoxyCodeLine{69 \textcolor{keywordtype}{int} \mbox{\hyperlink{memory_8h_a474a5adf749203852a944545d25d38ec}{TN\_curve\_set\_str}}(\mbox{\hyperlink{struct_t_n__curve__t}{TN\_curve\_t}} *, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \textcolor{keyword}{const} \textcolor{keywordtype}{char} *, \textcolor{keywordtype}{int}, \textcolor{keyword}{const} fq\_ctx\_t *);}
+\DoxyCodeLine{70 \textcolor{keywordtype}{void} \mbox{\hyperlink{memory_8h_a50e25ae1fb55f18c4194a2b75f1103e2}{TN\_curve\_clear}}(\mbox{\hyperlink{struct_t_n__curve__t}{TN\_curve\_t}} *);}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{73 }
+
+\end{DoxyCode}
