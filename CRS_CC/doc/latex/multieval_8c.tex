@@ -1,0 +1,32 @@
+\hypertarget{multieval_8c}{}\doxysection{/home/steaky/git/\+CRS/src/\+Polynomials/multieval.c File Reference}
+\label{multieval_8c}\index{/home/steaky/git/CRS/src/Polynomials/multieval.c@{/home/steaky/git/CRS/src/Polynomials/multieval.c}}
+{\ttfamily \#include \char`\"{}multieval.\+h\char`\"{}}\newline
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{multieval_8c_a424ab9d2b6d1a697269afe75e39b38a8}{remainder\+Cell}} (\mbox{\hyperlink{structfq__poly__bcell__t}{fq\+\_\+poly\+\_\+bcell\+\_\+t}} $\ast$rop, fq\+\_\+t $\ast$roots, uint offset\+\_\+start, uint offset\+\_\+end, const fq\+\_\+ctx\+\_\+t $\ast$F)
+\item 
+void \mbox{\hyperlink{multieval_8c_a3801f215ae6a0dd134a49d3d2f310ceb}{remainder\+Tree}} (\mbox{\hyperlink{structfq__poly__btree__t}{fq\+\_\+poly\+\_\+btree\+\_\+t}} $\ast$T, fq\+\_\+t $\ast$roots, uint len, const fq\+\_\+ctx\+\_\+t $\ast$F)
+\item 
+\mbox{\Hypertarget{multieval_8c_afe691d47d6fad1e7ebfc35dfcded73f7}\label{multieval_8c_afe691d47d6fad1e7ebfc35dfcded73f7}} 
+void {\bfseries fq\+\_\+poly\+\_\+multieval\+\_\+fromtree} (\mbox{\hyperlink{structfq__poly__bcell__t}{fq\+\_\+poly\+\_\+bcell\+\_\+t}} $\ast$c, fq\+\_\+t $\ast$res, fq\+\_\+poly\+\_\+t P, uint $\ast$k, const fq\+\_\+ctx\+\_\+t $\ast$F)
+\item 
+\mbox{\Hypertarget{multieval_8c_a78d76ec1cc557a1b23db29dcda0752bf}\label{multieval_8c_a78d76ec1cc557a1b23db29dcda0752bf}} 
+void {\bfseries fq\+\_\+poly\+\_\+multieval} (fq\+\_\+t $\ast$rop, fq\+\_\+t $\ast$op, fq\+\_\+poly\+\_\+t P, uint len, const fq\+\_\+ctx\+\_\+t $\ast$F)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{multieval_8c_a424ab9d2b6d1a697269afe75e39b38a8}\label{multieval_8c_a424ab9d2b6d1a697269afe75e39b38a8}} 
+\index{multieval.c@{multieval.c}!remainderCell@{remainderCell}}
+\index{remainderCell@{remainderCell}!multieval.c@{multieval.c}}
+\doxysubsubsection{\texorpdfstring{remainderCell()}{remainderCell()}}
+{\footnotesize\ttfamily void remainder\+Cell (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfq__poly__bcell__t}{fq\+\_\+poly\+\_\+bcell\+\_\+t}} $\ast$}]{rop,  }\item[{fq\+\_\+t $\ast$}]{roots,  }\item[{uint}]{offset\+\_\+start,  }\item[{uint}]{offset\+\_\+end,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F }\end{DoxyParamCaption})}
+
+Build a remainder tree from a fq\+\_\+t roots array. This is supposed to be wrapped by the remainder\+Tree function. The offset is used to slice the array (represent the position of element 0). This function is not responsible for the handling of the memory associated with the bcells. \mbox{\Hypertarget{multieval_8c_a3801f215ae6a0dd134a49d3d2f310ceb}\label{multieval_8c_a3801f215ae6a0dd134a49d3d2f310ceb}} 
+\index{multieval.c@{multieval.c}!remainderTree@{remainderTree}}
+\index{remainderTree@{remainderTree}!multieval.c@{multieval.c}}
+\doxysubsubsection{\texorpdfstring{remainderTree()}{remainderTree()}}
+{\footnotesize\ttfamily void remainder\+Tree (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{structfq__poly__btree__t}{fq\+\_\+poly\+\_\+btree\+\_\+t}} $\ast$}]{T,  }\item[{fq\+\_\+t $\ast$}]{roots,  }\item[{uint}]{len,  }\item[{const fq\+\_\+ctx\+\_\+t $\ast$}]{F }\end{DoxyParamCaption})}
+
+See remainder\+Cell. T should be initialized. 
