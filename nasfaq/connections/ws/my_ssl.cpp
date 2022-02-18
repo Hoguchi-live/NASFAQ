@@ -1,12 +1,4 @@
-#include <iostream>
-#include <string>
-#include <stdlib.h>
-
-#include <websocketpp/config/asio_client.hpp>
-#include <websocketpp/client.hpp>
-
-#include <websocketpp/common/thread.hpp>
-#include <websocketpp/common/memory.hpp>
+#include "my_ssl.h"
 
 typedef websocketpp::client<websocketpp::config::asio_tls_client> client;
 typedef std::shared_ptr<boost::asio::ssl::context> context_ptr;
@@ -21,7 +13,7 @@ public:
 		, m_status("Connecting")
 		, m_uri(uri)
 		, m_server("N/A")
-		, m_endpoint(endpoint)
+		, m_endpoint(endpoint) // I really hate this, maybe the whole send function altogether should be in this class?
 	{}
 
 	void on_open(client *c, websocketpp::connection_hdl hdl) {
@@ -76,11 +68,11 @@ public:
     				    	return;
     				}
 
-			} else {
-	    		m_messages.push_back(payload);
+			} else if (payload.substr(4, 15) == "coinPriceUpdate") {
+				std::cout << " > payload: " << payload.substr(21, payload.length()-2) << std::endl;
+    	  			nlohmann::json jres = nlohmann::json::parse(payload.substr(21, payload.length()-21-1));
+	    			m_messages.push_back(payload);
 			}
-	    	} else {
-	    		m_messages.push_back(websocketpp::utility::to_hex(msg->get_payload()));
 	    	}
 	}
 
