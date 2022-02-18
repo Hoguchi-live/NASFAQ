@@ -60,6 +60,7 @@ public:
 	void on_message(websocketpp::connection_hdl hdl, client::message_ptr msg) {
 		if (msg->get_opcode() == websocketpp::frame::opcode::text) {
 			std::string payload = msg->get_payload();
+
 			if (payload == "2") {
     				websocketpp::lib::error_code ec;
     				m_endpoint->send(m_hdl, "3", websocketpp::frame::opcode::text, ec);
@@ -68,9 +69,15 @@ public:
     				    	return;
     				}
 
-			} else if (payload.substr(4, 15) == "coinPriceUpdate") {
-				std::cout << " > payload: " << payload.substr(21, payload.length()-2) << std::endl;
-    	  			nlohmann::json jres = nlohmann::json::parse(payload.substr(21, payload.length()-21-1));
+			} else if (payload.substr(0, 2) == "42") {
+				/* Add message to a raw struct and pass to parser */
+				raw_message_t rmsg; /* should be cached somewhere? */
+				rmsg.type = msg_type_detect(payload.substr(2, 20)); /* Get message type, this should be out of this loop and encompassing the pongs and probes */
+				rmsg.data = payload.substr(3, payload.length() - 1); /* Should use regex */
+
+				std::cout << "Got payload of type: " << rmsg.type << std::endl;
+
+    	  			//nlohmann::json jres = nlohmann::json::parse(payload.substr(21, payload.length()-21-1));
 	    			m_messages.push_back(payload);
 			}
 	    	}

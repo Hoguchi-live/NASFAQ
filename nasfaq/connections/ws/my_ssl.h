@@ -13,6 +13,10 @@
 
 #include <nlohmann/json.hpp>
 
+#include "../parser/parser.h"
+#include "../common/common.h"
+#include "../safe_queue/safe_queue.h"
+
 int connect_ws(std::string);
 
 #endif
