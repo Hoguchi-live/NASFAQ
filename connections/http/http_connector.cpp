@@ -25,7 +25,7 @@ namespace nsfq_http {
 
 			/* Header definition. TODO: cookie should be handled safely? */
 			m_slist1 = NULL;
-			m_slist1 = curl_slist_append(m_slist1 , "Cookie: holosesh=s%3AxmS8xBlQk");
+			m_slist1 = curl_slist_append(m_slist1 , "Cookie: holosesh=s%3aSQpsfHRJcEeYVHLiKXg");
 			m_slist1 = curl_slist_append(m_slist1, "referer : https://nasfaq.biz/market");
 			curl_easy_setopt(m_hdl, CURLOPT_HTTPHEADER, m_slist1);
 		}

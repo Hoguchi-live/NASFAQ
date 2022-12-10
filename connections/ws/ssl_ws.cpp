@@ -182,7 +182,7 @@ namespace ws {
 		websocketpp::lib::error_code ec;
 
 		client::connection_ptr con = m_endpoint.get_connection(uri, ec);
-		con->append_header("Cookie", "holosesh=s%3AxmS8xBlQk4k");
+		con->append_header("Cookie", "holosesh=s%3AxmS8xBlcEeYVHLiKXg");
 
 		if(ec) {
 			std::cout << ">Connect initialization error: " << ec.message() << std::endl;
