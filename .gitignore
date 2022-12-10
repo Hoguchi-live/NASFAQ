@@ -1,4 +1,7 @@
-##### C
+#### Python
+*.pyc
+
+#### C
 
 # Prerequisites
 *.d
