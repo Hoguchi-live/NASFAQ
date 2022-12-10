@@ -1,10 +1,11 @@
-g++  ../safe_queue/safe_queue.cpp \
-	../common/common.cpp \
+g++  	../common/common.cpp \
+  	../common/formatting.cpp \
 	../http/http_connector.cpp \
 	../http/users.cpp \
 	../ws/ssl_ws.cpp \
 	../sql/db_init.cpp \
 	../sql/db_handle.cpp \
+	../parser/parser_aux.cpp \
 	../parser/parser.cpp \
 	../ws/http_handshake.cpp \
 	./main.cpp \

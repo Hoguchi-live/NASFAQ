@@ -19,12 +19,13 @@ namespace db {
 	/********************************************************************************
 					HISTORY
 	********************************************************************************/
-	void push_history( pqxx::connection*, ws_msg_parsed<WS_EVENT_HISTORY_UPDATE> );
+	void push_history( pqxx::connection*, ws_msg_parsed<WS_EVENT_HISTORY> );
+	void push_uhistory( pqxx::connection*, ws_msg_parsed<WS_EVENT_HISTORY> );
 
-	ws_msg_parsed<WS_EVENT_HISTORY_UPDATE> pull_last_cycle( pqxx::connection*);
+	ws_msg_parsed<WS_EVENT_HISTORY> pull_last_cycle( pqxx::connection*);
 	std::vector<std::string> pull_userid_list_ts( pqxx::connection *, long, long);
-	ws_msg_parsed<WS_EVENT_HISTORY_UPDATE> pull_transactions_userid_ts( pqxx::connection *, std::string, long, long);
-	ws_msg_parsed<WS_EVENT_HISTORY_UPDATE> pull_last_cycle_userid( pqxx::connection *, std::string);
+	ws_msg_parsed<WS_EVENT_HISTORY> pull_transactions_userid_ts( pqxx::connection *, std::string, long, long);
+	ws_msg_parsed<WS_EVENT_HISTORY> pull_last_cycle_userid( pqxx::connection *, std::string);
 
 	float pull_last_cycle_slope(pqxx::connection*, std::string);
 
@@ -33,7 +34,7 @@ namespace db {
 	/********************************************************************************
 					COIN PRICE
 	********************************************************************************/
-	void push_coin_price( pqxx::connection*, ws_msg_parsed<WS_EVENT_COIN_PRICE_UPDATE> );
+	void push_coin_price( pqxx::connection*, ws_msg_parsed<WS_EVENT_COIN_PRICE> );
 
 	/********************************************************************************
 					COIN PRICE
@@ -44,6 +45,7 @@ namespace db {
 					USERS
 	********************************************************************************/
 	void push_users( pqxx::connection*, std::vector<user_t> );
+	std::vector<std::string> pull_userids_ts(pqxx::connection *C, long ts_low, long ts_high);
 	std::string userid_to_username(pqxx::connection*, std::string userid);
 }
 #endif

@@ -9,24 +9,17 @@
 #include "../sql/db_handle.h"
 
 #include "../common/common.h"
+#include "../common/formatting.h"
 #include "../ws/ssl_ws.h"
+
+#include "./parser_aux.h"
+//TODO: Remove ws here and use a safequeue
 
 namespace parser {
 
-WS_MSG msg_type_detect(std::string);
-
-template <WS_MSG E>
-ws_msg_parsed<E> raw_msg_parse(std::string);
-
-template <>
-ws_msg_parsed<WS_EVENT_COIN_PRICE_UPDATE> raw_msg_parse<WS_EVENT_COIN_PRICE_UPDATE>(std::string);
-
-template<>
-ws_msg_parsed<WS_EVENT_TRANSACTION> raw_msg_parse<WS_EVENT_TRANSACTION>(std::string);
-
-template<>
-ws_msg_parsed<WS_EVENT_HISTORY_UPDATE> raw_msg_parse<WS_EVENT_HISTORY_UPDATE>(std::string);
-
+/*******************************************************************************
+	Parser object
+*******************************************************************************/
 class parser {
 public:
 	parser(ws::connection_metadata::ptr, pqxx::connection*);
@@ -45,7 +38,30 @@ private:
 	static void* process_queue_helper(void*);
 };
 
-}
+/*******************************************************************************
+	Message parsing
+*******************************************************************************/
+template <WS_MSG E>
+ws_msg_parsed<E> single(std::string);
 
+template <WS_MSG E>
+ws_msg_parsed<E> single_j(nlohmann::json);
+
+template <>
+ws_msg_parsed<WS_EVENT_COIN_PRICE> single<WS_EVENT_COIN_PRICE>(std::string);
+
+template<>
+ws_msg_parsed<WS_EVENT_TRANSACTION> single<WS_EVENT_TRANSACTION>(std::string);
+
+template <>
+ws_msg_parsed<WS_EVENT_TRANSACTION> single_j<WS_EVENT_TRANSACTION>(nlohmann::json );
+
+template<>
+ws_msg_parsed<WS_EVENT_HISTORY> single<WS_EVENT_HISTORY>(std::string);
+
+template <>
+ws_msg_parsed<WS_EVENT_MF_PORTFOLIO> single<WS_EVENT_MF_PORTFOLIO>(std::string);
+
+} // parser
 #endif
 

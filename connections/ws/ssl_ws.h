@@ -1,22 +1,12 @@
 #ifndef _SSL_WS_H_
 #define _SSL_WS_H_
 
-#include <iostream>
-#include <string>
-#include <stdlib.h>
-
-//#include "../parser/parser.h"
 #include "../common/common.h"
-#include "../safe_queue/safe_queue.h"
 
 #include <websocketpp/config/asio_client.hpp>
 #include <websocketpp/client.hpp>
-
 #include <websocketpp/common/thread.hpp>
 #include <websocketpp/common/memory.hpp>
-
-#include <nlohmann/json.hpp>
-
 
 namespace ws {
 	typedef websocketpp::client<websocketpp::config::asio_tls_client> client;
@@ -49,7 +39,6 @@ namespace ws {
 		std::string m_uri;
 		std::string m_server;
 		std::string m_error_reason;
-		//std::vector<std::string> m_messages;
 		client *m_endpoint;
 		std::queue<std::string> m_msg_q;
 		mutable std::mutex m_msg_q_mutex;
@@ -68,7 +57,7 @@ namespace ws {
 		void close(int, websocketpp::close::status::value, std::string);
 		void send(int, std::string);
 		connection_metadata::ptr get_metadata(int) const;
-		std::string get_queue_front(int) const;
+		std::string read(int) const;
 	private:
 		typedef std::map<int, connection_metadata::ptr> con_list;
 		client m_endpoint;

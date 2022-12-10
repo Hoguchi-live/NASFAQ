@@ -1,5 +1,7 @@
 #include "maths.h"
 
+#define DIFF_ALL_MIN_CYCLE_SIZE 0
+
 namespace query {
 	const std::string query_template_slope_ts_bot =  "SELECT PRICE, TIMESTAMP FROM HISTORY "\
 						     "WHERE COIN = '{}' AND TIMESTAMP <= {} AND TIMESTAMP > {} "\
@@ -56,36 +58,63 @@ namespace norm {
 		return rop;
 	}
 
-	std::map<std::string, float> diff_all(pqxx::connection *C, cycle_t base_cycle, std::map<std::string, cycle_t> cycles, std::vector<std::string> userid_list, std::string userid, long ts_high, long ts_low, float threshold) {
-		std::map<std::string, float> result;
-		cycle_t tmp1, tmp2;
-		float tmp_res;
+	std::map<std::string, float> diff_all(
+			pqxx::connection *C,
+			cycle_t base_cycle,
+			std::map<std::string, cycle_t> cycles,
+			long ts_high,
+			long ts_low,
+			float threshold){
 
-		for(auto const& id : userid_list) {
-			tmp2 = cycles.find(id)->second;
-			if (cycle_size(tmp2) >= 10) {
-				tmp_res = norm(diff_vector(tmp1, tmp2));
-				if (tmp_res < threshold) {
-					result[id] = tmp_res;
-					std::cout << "Difference between " << userid << " and " << id << " : " << result[id] << std::endl;
-				}
+		std::map<std::string, float> result;
+		std::string tmp_uid;
+		cycle_t tmp_c;
+		float tmp_f;
+
+		for(std::map<std::string,cycle_t>::iterator iter = cycles.begin(); iter != cycles.end(); ++iter) {
+			tmp_uid = iter->first;
+			tmp_c = iter->second;
+			tmp_f = norm(diff_vector(base_cycle, tmp_c));
+
+			if(tmp_f && tmp_f < threshold){
+				result.insert(std::pair<std::string, float>(tmp_uid, tmp_f));
 			}
 		}
 		return result;
 	}
 
-	std::map<std::string, std::map<std::string, float>> diff_map(pqxx::connection *C, std::vector<std::string> userids, long ts_high, long ts_low, float threshold){
+	std::map<std::string, std::map<std::string, float>> diff_map(
+			pqxx::connection *C,
+			std::vector<std::string> userids,
+			long ts_high,
+			long ts_low,
+			float threshold){
+
 		std::map<std::string, std::map<std::string, float>> result;
 		std::map<std::string, cycle_t> cycles;
 		std::map<std::string, float> tmp;
+		cycle_t tmp_c;
+		int c_size;
+		unsigned int pos;
+		std::string userid;
 
 		/* Prepare cycles from db. */
-		for(auto const& id : userids) {
-			cycles.insert( std::pair<std::string, cycle_t>(id,  history_to_cycle(db::pull_last_cycle_userid(C, id))) );
+		pos = 0;
+		for(auto const& userid:userids) {
+			tmp_c = history_to_cycle(db::pull_last_cycle_userid(C, userid));
+			c_size = cycle_size(tmp_c);
+
+			/* Only keep players with large cycles */
+			if (c_size >= DIFF_ALL_MIN_CYCLE_SIZE) {
+				cycles.insert(std::pair<std::string, cycle_t>(userid, tmp_c));
+			}
+			pos++;
 		}
 
-		for (auto& userid:userids) {
-			tmp = norm::diff_all(C, cycles[userid], cycles, userids, userid, ts_high, ts_low, threshold);
+		/* Compute norms and diffs */
+		for(std::map<std::string,cycle_t>::iterator iter = cycles.begin(); iter != cycles.end(); ++iter) {
+			userid = iter->first;
+			tmp = norm::diff_all(C, cycles[userid], cycles, ts_high, ts_low, threshold);
 			result.insert( std::pair<std::string, std::map<std::string, float>>( userid, tmp ));
 		}
 

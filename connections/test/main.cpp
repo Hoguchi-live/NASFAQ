@@ -2,7 +2,6 @@
 #include "../http/http_connector.h"
 #include "../http/users.h"
 #include "../ws/http_handshake.h"
-#include "../safe_queue/safe_queue.h"
 #include "../ws/ssl_ws.h"
 #include "../sql/db_init.h"
 #include "../sql/db_handle.h"
@@ -36,7 +35,7 @@ int connect_ws() {
 	}
 
 	/* Populate database if needed. */
-	db::populate();
+	db::create::database::all();
 
 	/* Open up database connection. */
 	pqxx::connection C("dbname = nasfaq user = steaky  \

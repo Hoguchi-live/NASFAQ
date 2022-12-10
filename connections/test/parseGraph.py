@@ -4,57 +4,76 @@ import networkx as nx
 import pyvis
 import json
 
-THRESHOLD = 10
+MAX_DISPLAY = 3
+THRESHOLD = 5
 
-def make_net(N, json_path):
-    with open(json_path, 'r') as f:
-        data = json.load(f)
+fun = lambda x : 10-x
 
-    weighted_edges = []
-    for parent, element in data.items():
-        for child, weight in element.items():
-            if parent == child: pass
-            elif weight > THRESHOLD: pass
-            else:
-                weighted_edges.append((parent, child, round(weight, 1)))
+json_path = "graph.json"
 
-    # Add edges
-    N.add_weighted_edges_from(weighted_edges)
+net = Network(height='980px', width='100%', bgcolor='#222222', font_color='white')
+net.barnes_hut()
 
-def nudge(pos, x_shift, y_shift):
-    return {n:(x + x_shift, y + y_shift) for n,(x,y) in pos.items()}
+with open(json_path, 'r') as f:
+    data = json.load(f)
 
-net = nx.Graph()
-make_net(net, "graph.json")
+sources, targets, weights = [], [], []
 
-pos = nx.circular_layout(net)
+for parent, element in data.items():
+    tmp_targets, tmp_weights = [], []
+    for child, weight in element.items():
+        if parent == child: pass
+        else:
+            adj_weight = fun(weight)
+            net.add_node(parent, parent, title = parent)
+            net.add_node(child, child, title = child)
 
-nx.draw_networkx(
-    net, pos, edge_color='black', width=1, linewidths=1,
-    node_size=100, node_color='pink', alpha=0.9,
-    with_labels = False)
-    #labels={node: node for node in net.nodes()}
+            tmp_targets.append(child)
+            tmp_weights.append( round(adj_weight, 2) )
 
-edge_labels = dict([((n1, n2), net[n1][n2]['weight'])
-                    for n1, n2 in net.edges])
+    s1, s2 = (list(reversed(t)) for t in zip(*sorted(zip(tmp_weights, tmp_targets))))
+    for i in range(min(MAX_DISPLAY, len(s2))):
+        w = round(s1[i], 2)
+        if w >= THRESHOLD:
+            net.add_edge(parent, s2[i], value = w, title = s1[i])
 
-#nx.draw_networkx_edge_labels(
-#    net, pos,
-#    edge_labels=edge_labels,
-#    font_color='red'
-#)
+neighbor_map = net.get_adj_list()
+edges = net.get_edges()
+nodes = net.get_nodes()
 
+N_nodes = len(nodes)
+N_edges = len(edges)
 
-pretty_net = Network(height='750px', width='100%', bgcolor='#222222', font_color='white')
-pretty_net.barnes_hut()
-pretty_net.from_nx(net)
-pretty_net.show_buttons(filter_=['physics'])
+weights=[[] for i in range(N_nodes)]
 
+#Associating weights to neighbors
+for i in range(N_nodes): #Loop through nodes
+    for neighbor in neighbor_map[nodes[i]]: #and neighbors
+        for j in range(N_edges): #associate weights to the edge between node and neighbor
+            if (edges[j]['from']==nodes[i] and edges[j]['to']==neighbor) or \
+               (edges[j]['from']==neighbor and edges[j]['to']==nodes[i]):
+                weights[i].append(edges[j]['value'])
 
+for node,i in zip(net.nodes,range(N_nodes)):
 
+    node['value']=len(neighbor_map[node['id']])
+    node['weight']=[str(weights[i][k]) for k in range(len(weights[i]))]
+    list_neighbor=list(neighbor_map[node['id']])
 
-pretty_net.show("graph.html")
+    #Sort by score
+    w_list = [node['weight'][k] for k in range(node['value'])]
+    n_list = [list_neighbor[k] for k in range(node['value'])]
 
+    try:
+        s_weights, s_neighbors = (list(t) for t in zip(*sorted(zip(w_list, n_list))))
 
-#plt.axis('off')
-#plt.show()
+        #Concatenating neighbors and weights
+        hover_str=[s_neighbors[k]+' '+ s_weights[k] for k in range(node['value'])]
+
+        #Setting up node title for hovering
+        node['title']+=' Neighbors:<br>'+'<br>'.join(hover_str)
+    except ValueError:
+        pass
+
+net.toggle_physics(True)
+net.show("graph.html")

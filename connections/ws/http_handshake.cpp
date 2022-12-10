@@ -6,8 +6,6 @@ namespace ws {
 			static const char *POLLING_URL_0 = "https://nasfaq.biz/socket/?EIO=4&transport=polling&t=Ny7z439";
 			static const char *POLLING_URL_1 = "https://nasfaq.biz/socket/?user=314d0bda-d7f0-4636-aed7-5ea02743604b&EIO=4&transport=polling&t=Ny7z472";
 			static const char *POLLING_URL_2 = "https://nasfaq.biz/socket/?user=314d0bda-d7f0-4636-aed7-5ea02743604b&EIO=4&transport=polling&t=Ny7z4Bn&sid=";
-			static const char *POLLING_URL_3 = "https://nasfaq.biz/socket/?user=314d0bda-d7f0-4636-aed7-5ea02743604b&EIO=4&transport=polling&t=Ny7z4Bp&sid=";
-			static const char *POLLING_URL_4 = "https://nasfaq.biz/socket/?user=314d0bda-d7f0-4636-aed7-5ea02743604b&EIO=4&transport=polling&t=Ny7z4EU&sid=";
 			nlohmann::json json_ret;
 			std::string sid;
 
@@ -23,10 +21,6 @@ namespace ws {
 
 			/* Post "40" acknowledgement with sid. */
 			c.post(POLLING_URL_2 + sid, "40");
-
-			/* Continue handshake (might be unneeded). See XHR trace. */
-			//c.get(POLLING_URL_3 + sid);
-			//c.get(POLLING_URL_4 + sid);
 
 			return sid;
 		}

@@ -1,0 +1,165 @@
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/***************** MUTUAL FUNDS *******************************/
+
+42[	"mutualFundPortfolioUpdate",
+	{"fund":"6796531e-8668-49d1-bb01-f07db4264ce6",
+	"tUpdate":
+		{"event":"Transaction Update",
+		"transactions":[{
+			"coin":"miko",
+			"type":0,
+			"userid":"6796531e-8668-49d1-bb01-f07db4264ce6",
+			"quantity":1,
+			"timestamp":1655806346312,
+			"completed":false,
+			"price":null,"fund":true
+			}],
+		"portfolio":null
+		}
+	}
+]
+
+42[	"mutualFundPortfolioUpdate",
+	{"fund":"6796531e-8668-49d1-bb01-f07db4264ce6",
+	"tUpdate":
+		{"event":"Transaction Update",
+		"transactions":[{
+			"coin":"miko","type":0,"userid":"6796531e-8668-49d1-bb01-f07db4264ce6","quantity":1,"timestamp":1655806346312,"completed":true,"price":32820.18,"fund":true}],
+		"portfolio":{
+			"miko":{"amount":352,"timestamp":1655806346312,"meanPurchasePrice":29645.69}
+		}
+		}
+	}]
+
+42[	"mutualFundBalanceUpdate",
+	{"funds":
+		{"6796531e-8668-49d1-bb01-f07db4264ce6":4924583.6}
+	}
+]
+
+42[	"mutualFundRunningHistoryUpdate",
+	{"f9df4304-e084-494a-b918-9b5ab1c6842b":
+		{"volume":1000,"price":100000,"saleValue":100000,"networth":100000000,"members":1,"timestamp":1655806533376},
+	"851a75f1-19cf-4aad-b3f0-95ebf1973e4b":
+		{"volume":81000,"price":2810,"saleValue":2810,"networth":224663343.5,"members":4,"timestamp":1655806533380},
+	...
+	}
+]
+
+42[	"mutualFundStatUpdate",
+	{"funds":
+		{"f9df4304-e084-494a-b918-9b5ab1c6842b":
+			{"volume":1000,"price":100000,"saleValue":100000,"networth":100000000,"members":1},
+		"851a75f1-19cf-4aad-b3f0-95ebf1973e4b":
+			{"volume":81000,"price":2810,"saleValue":2810,"networth":224663343.5,"members":4},
+		...
+		}
+	}
+]
+
+42[	"mutualFundMembersUpdate",
+	{"type":"add",
+	"fund":"851a75f1-19cf-4aad-b3f0-95ebf1973e4b",
+	"username":"Bombshell Blondes Banking",
+	"userid":"726b5a5e-9dc0-438e-b6be-fb901a51f482"}
+]
+
+42[	"mutualFundOrderUpdate",
+	{"fund":"851a75f1-19cf-4aad-b3f0-95ebf1973e4b","buys":0,"sells":0}
+]
+
+42["	mutualFundMakePublicUpdate",
+	{"fund":"f9df4304-e084-494a-b918-9b5ab1c6842b"}
+]
+
+
+XHR:
+
+{"success":true,"funds":
+{"4a4afb61-7a1e-4f99-bbec-fd50d0529c5f":
+	{"id":"4a4afb61-7a1e-4f99-bbec-fd50d0529c5f",
+	"name":"Miyatsuko",
+	"dateCreated":"2022-06-20T21:04:21.129Z",
+	"icon":"inanis",
+	"missionStatement":"Abayo Chocoball",
+	"tag":"造"
+	,"color":"e0ae2f",
+	"ceo":"10dcbbd5-f761-44f3-92ce-ea5b01f1d747",
+	"balance":1228441634.6,
+	"released":true,
+	"members":
+		[	{"id":"10dcbbd5-f761-44f3-92ce-ea5b01f1d747","username":"[造] Miyatsuko-Priestess Treasury","boardMember":true},
+			{"id":"135c986e-0cc3-45d1-ad9a-77725a99d44f","username":"[造] Touching Fluffy Tails Management Co.","boardMember":true},
+			...
+		],
+	"portfolio":
+		{	"kronii":{"amount":8,"timestamp":1655760060678,"meanPurchasePrice":16719.18},
+			"inanis":{"amount":8,"timestamp":1655760516709,"meanPurchasePrice":27564.07},
+			...
+		 }
+	},
+	...,
+	...,
+	...
+},
+"bulletins":
+	{"4a4afb61-7a1e-4f99-bbec-fd50d0529c5f":[],
+	"7b24a25b-8f78-42b6-85ff-1d3f62c7132a":[
+		{"id":"3e7a8c16-2e44-42aa-91ee-57674378982f",
+		"fund":"7b24a25b-8f78-42b6-85ff-1d3f62c7132a",
+		"author":"f7c3b57a-8b4f-4715-9f37-dfcc81fb0c18",
+		"authorName":"[狐] Kitsune Holdings 🌽🦊🍔",
+		"timestamp":"2022-06-20T22:54:11.252Z",
+		"message":"OhaKOOOOOOOOOOOOOOOOOOON"
+		}
+	],
+	...
+	},
+
+"fundHistory":{
+	"4a4afb61-7a1e-4f99-bbec-fd50d0529c5f":
+		[{"timestamp":"2022-06-20T21:04:21.129Z","volume":100000,"price":16000,"networth":1600000000,"members":1}],
+	"81570634-37bb-4e10-b2cb-ea1bf955fc53":
+		[{"timestamp":"2022-06-20T21:04:24.109Z","volume":1000,"price":25000,"networth":25000000,"members":1}],
+	...
+	},
+"fundStats":{
+	"4a4afb61-7a1e-4f99-bbec-fd50d0529c5f":{
+		"volume":100000,
+		"price":16000,
+		"saleValue":16000,
+		"networth":1584327512,
+		"members":10,
+		"history":[
+			{"volume":100000,"price":16000,"saleValue":16000,"networth":1600000000,"members":1,"timestamp":1655759061132},
+			{"volume":100000,"price":16000,"saleValue":16000,"networth":1600000000,"members":8,"timestamp":1655759714668},
+			...
+		]
+	},
+	...
+}
+
+
+"orders":{
+	"779ee96f-5a24-4244-b1ce-a8cc540f0cbd":
+		{"buys":6980,"sells":0},
+	"6796531e-8668-49d1-bb01-f07db4264ce6":
+		{"buys":12157,"sells":0},
+	...
+}
+"fundPayouts":{},
+"fundsToDissolve":{}

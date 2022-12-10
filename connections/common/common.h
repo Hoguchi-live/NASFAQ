@@ -13,7 +13,7 @@
 
 #include <nlohmann/json.hpp>
 
-//#include "../safe_queue/safe_queue.h"
+// TODO: REFACTOR ALL THIS TRASH HOLY SHIT
 
 /***********************************************************************************
   				WEBSOCKET MESSAGE STRUCTURES
@@ -58,7 +58,7 @@ struct ws_msg_parsed;
   coinPriceUpdate structure
 */
 template <>
-struct ws_msg_parsed<WS_EVENT_COIN_PRICE_UPDATE> {
+struct ws_msg_parsed<WS_EVENT_COIN_PRICE> {
 	std::string coin;
 	float price;
 	float saleValue;
@@ -66,7 +66,7 @@ struct ws_msg_parsed<WS_EVENT_COIN_PRICE_UPDATE> {
 };
 
 /**
-  Auxiliary type for WS_EVENT_HISTORY_UPDATE.
+  Auxiliary type for WS_EVENT_HISTORY.
   This holds individual transactions as handed by the websocket in a list.
 */
 template <>
@@ -78,14 +78,41 @@ struct ws_msg_parsed<WS_EVENT_TRANSACTION> {
 	long timestamp;
 	bool completed;
 	float price;
+	bool fund;
 };
 
 /**
   historyUpdate structure holding transactions.
 */
 template<>
-struct ws_msg_parsed<WS_EVENT_HISTORY_UPDATE> {
+struct ws_msg_parsed<WS_EVENT_HISTORY> {
 	std::vector<ws_msg_parsed<WS_EVENT_TRANSACTION>> transaction_list;
+};
+
+/***********************************************************************************
+  				MUTUAL FUNDS
+***********************************************************************************/
+/**
+  Portfolio type TODO: Make this global, could be used with users' wallets
+  nasfaq::types::portfolio::coin
+*/
+typedef struct portfolio_coin_t {
+	std::string coin; //TODO: make this an enum
+	uint amount;
+	long ts;
+	float mpp;
+} portfolio_coin_t ;
+
+
+/**
+  Portfolio update
+*/
+template <>
+struct ws_msg_parsed<WS_EVENT_MF_PORTFOLIO> {
+	std::string fund;
+	std::string event; // TODO: type for this
+	std::vector<ws_msg_parsed<WS_EVENT_TRANSACTION>> transactions;
+	std::vector<portfolio_coin_t> portfolio;
 };
 
 /***********************************************************************************

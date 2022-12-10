@@ -67,6 +67,7 @@ namespace ws {
 				}
 
 			} else if (payload.substr(0, 2) == "42") {
+				// Raw messages are of the form "42[PAYLOAD]"
 				std::string payload_format = payload.substr(3, payload.length() - 4);
 	    			push_message(payload_format);
 			}
@@ -85,11 +86,6 @@ namespace ws {
 		return m_status;
 	}
 
-	/**
-	  Should it use the cdt variable?
-	  If it doesn't lock this thread up maybe, otherwise it should be defined externally.
-	  Isn't the connection in another thread anyways?
-	*/
 	bool connection_metadata::msg_queue_empty(void) {
 		return m_msg_q.empty();
 	}
@@ -250,8 +246,17 @@ namespace ws {
 			std::cout << "> Error sending message: " << ec.message() << std::endl;
 		    	return;
 		}
+	}
 
-	//	metadata_it->second->record_sent_message(message);
+	// TODO This should read to a buffer (void function)
+	std::string  websocket_endpoint::read(int id) const {
+		con_list::const_iterator metadata_it = m_connection_list.find(id);
+		if(metadata_it == m_connection_list.end()) {
+			std::cout << "> No connection found with id " << id << std::endl;
+		    	return "";
+		}
+
+		return metadata_it->second->pop_message();
 	}
 
 	connection_metadata::ptr  websocket_endpoint::get_metadata(int id) const {
@@ -262,12 +267,5 @@ namespace ws {
 			return metadata_it->second;
 		}
 	}
-	std::string  websocket_endpoint::get_queue_front(int id) const {
-		con_list::const_iterator metadata_it = m_connection_list.find(id);
-		if(metadata_it == m_connection_list.end()) {
-			return "";
-		} else {
-			return metadata_it->second->pop_message();
-		}
-	}
+
 }

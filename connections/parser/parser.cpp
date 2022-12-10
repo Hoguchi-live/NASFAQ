@@ -1,110 +1,10 @@
 #include "parser.h"
 
-
 namespace parser {
 
-WS_MSG msg_type_detect(std::string op) {
-	WS_MSG ret;
-
-	if (op.substr(0, 30).find("coinPriceUpdate") != std::string::npos) {
-		ret = WS_EVENT_COIN_PRICE_UPDATE;
-	} else if (op.substr(0, 30).find("historyUpdate") != std::string::npos) {
-		ret = WS_EVENT_HISTORY_UPDATE;
-	} else if (op.substr(0, 30).find("todayPricespdate") != std::string::npos) {
-		ret = WS_EVENT_TODAY_PRICES_UPDATE;
-	} else if (op.substr(0, 30).find("brokerFeeUpdate") != std::string::npos) {
-		ret = WS_EVENT_BROKER_FEE_UPDATE;
-	} else {
-		ret = WS_EVENT_UNKNOWN;
-	}
-	return ret;
-}
-
-template <WS_MSG E>
-ws_msg_parsed<E> parse(std::string rmsg) {};
-
-template <>
-ws_msg_parsed<WS_EVENT_COIN_PRICE_UPDATE> raw_msg_parse<WS_EVENT_COIN_PRICE_UPDATE>(std::string rmsg) {
-	nlohmann::json jparsed = nlohmann::json::parse(rmsg); /* Check for errors and emptiness needed */
-
-	ws_msg_parsed<WS_EVENT_COIN_PRICE_UPDATE> rop;
-	rop.coin = jparsed["coin"];
-	rop.price = (jparsed["info"])["price"];
-	rop.saleValue = (jparsed["info"])["saleValue"];
-	rop.inCirculation = (jparsed["info"])["inCirculation"];
-
-	return rop;
-}
-
-/****************************************************************
-  Helper functions should go in common or something more general
-****************************************************************/
-
-/*
-   See https://stackoverflow.com/questions/2896600/how-to-replace-all-occurrences-of-a-character-in-string
-*/
-static inline void replace_all(std::string& str, const std::string& from, const std::string& to) {
-    size_t start_pos = 0;
-    while((start_pos = str.find(from, start_pos)) != std::string::npos) {
-        str.replace(start_pos, from.length(), to);
-        start_pos += to.length(); // Handles case where 'to' is a substring of 'from'
-    }
-}
-
-/*
-   Splits a string "{...}, ..., {...}" in an array ["{...}", ..., "{...}"].
-   ONLY HANDLES DICTIONARIES OF DEPTH 1.
-*/
-std::vector<std::string> tokenize_json_array(std::string op, std::string token = "}") {
-	int start = 0;
-	int end = op.find("}");
-	std::vector<std::string> ret;
-
-	while( end != -1 ) {
-		ret.push_back(op.substr(start, end - start + 1));
-		start = end + token.size() + 1; // + 1 accounts for the ",".
-        	end = op.find(token, start);
-	}
-
-	return ret;
-}
-
-template <>
-ws_msg_parsed<WS_EVENT_TRANSACTION> raw_msg_parse<WS_EVENT_TRANSACTION>(std::string rmsg) {
-	nlohmann::json jparsed = nlohmann::json::parse(rmsg); /* Check for errors and emptiness needed */
-
-	ws_msg_parsed<WS_EVENT_TRANSACTION> rop;
-	rop.coin = jparsed["coin"];
-	rop.type = jparsed["type"];
-	rop.userid = jparsed["userid"];
-	rop.quantity = jparsed["quantity"];
-	rop.timestamp = jparsed["timestamp"];
-	rop.completed = jparsed["completed"];
-	rop.timestamp = jparsed["timestamp"];
-	rop.price = jparsed["price"];
-
-	return rop;
-}
-
-template<>
-ws_msg_parsed<WS_EVENT_HISTORY_UPDATE> raw_msg_parse<WS_EVENT_HISTORY_UPDATE>(std::string rmsg) {
-	std::vector<std::string> raw_vect;
-	ws_msg_parsed<WS_EVENT_HISTORY_UPDATE> rop;
-
-	/* Replace \" by " */
-	replace_all(rmsg, "\\\"", "\"");
-
-	/* Extract array */
-	raw_vect = tokenize_json_array(rmsg);
-
-	/* Create the output array by parsing each transaction elements */
-	for(auto & raw_tr : raw_vect) {
-		rop.transaction_list.push_back(raw_msg_parse<WS_EVENT_TRANSACTION>(raw_tr));
-	}
-
-	return rop;
-}
-
+/*******************************************************************************
+	Parser object
+*******************************************************************************/
 parser::parser(ws::connection_metadata::ptr metadata, pqxx::connection* C)
 	: m_metadata(metadata)
 	, m_process_queue_state(false)
@@ -112,7 +12,6 @@ parser::parser(ws::connection_metadata::ptr metadata, pqxx::connection* C)
 {}
 
 parser::~parser() {
-
 }
 
 void parser::process_queue() {
@@ -125,25 +24,35 @@ void parser::process_queue() {
 
 	while(m_process_queue_state) {
 		raw_data = m_metadata->pop_message();
-		type = msg_type_detect(raw_data);
+
+		type = types::extract(raw_data);
+
+		// TODO: make a function for each of these cases and use a switch as in parser_aux
 
 		/* POSTGRESQL STUFF GOES HERE */
-		if (type == WS_EVENT_COIN_PRICE_UPDATE) {
+		if (type == WS_EVENT_COIN_PRICE) {
 			/* 18 = 3 + 15 */
 			raw_data = raw_data.substr(18, raw_data.length()-18);
-			ws_msg_parsed<WS_EVENT_COIN_PRICE_UPDATE> parsed_msg = raw_msg_parse<WS_EVENT_COIN_PRICE_UPDATE>(raw_data);
+			ws_msg_parsed<WS_EVENT_COIN_PRICE> parsed_msg = single<WS_EVENT_COIN_PRICE>(raw_data);
 
 			std::cout << parsed_msg << std::endl;
 			db::push_coin_price(m_connection, parsed_msg);
 
-		} else if (type == WS_EVENT_HISTORY_UPDATE) {
+		} else if (type == WS_EVENT_HISTORY) {
 			raw_data = raw_data.substr(18, raw_data.length()-18);
-			ws_msg_parsed<WS_EVENT_HISTORY_UPDATE> parsed_msg = raw_msg_parse<WS_EVENT_HISTORY_UPDATE>(raw_data);
+			ws_msg_parsed<WS_EVENT_HISTORY> parsed_msg = single<WS_EVENT_HISTORY>(raw_data);
 
 			std::cout << parsed_msg << std::endl;
 			db::push_history(m_connection, parsed_msg);
 			//std::cout << "\x1B[31mTexting\033[0m\t\t" << std::endl;
 		}
+		 else if (type == WS_EVENT_MF_PORTFOLIO) {
+			raw_data = raw_data.substr(28, raw_data.length()-28);
+			//raw_data = payload::extract(raw_data);
+			ws_msg_parsed<WS_EVENT_MF_PORTFOLIO> parsed_msg = single<WS_EVENT_MF_PORTFOLIO>(raw_data);
+
+			std::cout << parsed_msg << std::endl;
+		 }
 	}
 }
 
@@ -168,9 +77,140 @@ void parser::process_queue_thread_join()
 	pthread_join(m_process_queue_thread, 0);
 }
 
-
 void parser::process_queue_stop() {
 	m_process_queue_state = false;
 }
 
+/*******************************************************************************
+	Message parsing
+*******************************************************************************/
+//template <WS_MSG E>
+//ws_msg_parsed<E> parse(std::string rmsg) {};
+
+/*
+   Takes as input a raw string associated to a coinPriceUpdate ws event and returns a parsed representation of it.
+*/
+template <>
+ws_msg_parsed<WS_EVENT_COIN_PRICE> single<WS_EVENT_COIN_PRICE>(std::string rmsg) {
+	nlohmann::json jparsed = nlohmann::json::parse(rmsg); /* Check for errors and emptiness needed */
+
+	ws_msg_parsed<WS_EVENT_COIN_PRICE> rop;
+	rop.coin = jparsed["coin"];
+	rop.price = (jparsed["info"])["price"];
+	rop.saleValue = (jparsed["info"])["saleValue"];
+	rop.inCirculation = (jparsed["info"])["inCirculation"];
+
+	return rop;
 }
+
+/*
+   Takes as input a raw string associated to a transaction ws event and returns a parsed representation of it.
+*/
+template <>
+ws_msg_parsed<WS_EVENT_TRANSACTION> single<WS_EVENT_TRANSACTION>(std::string rmsg) {
+	nlohmann::json jparsed = nlohmann::json::parse(rmsg); /* Check for errors and emptiness needed */
+
+	ws_msg_parsed<WS_EVENT_TRANSACTION> rop;
+
+	rop.coin = jparsed["coin"];
+	rop.type = jparsed["type"];
+	rop.userid = jparsed["userid"];
+	rop.quantity = jparsed["quantity"];
+	rop.timestamp = jparsed["timestamp"];
+	rop.completed = jparsed["completed"];
+	rop.timestamp = jparsed["timestamp"];
+	rop.price = jparsed["price"];
+	// rop.fund = jparsed["fund"];
+
+	return rop;
+}
+
+/*
+   Same as above but takes a json as input.
+*/
+template <>
+ws_msg_parsed<WS_EVENT_TRANSACTION> single_j<WS_EVENT_TRANSACTION>(nlohmann::json op) {
+
+	ws_msg_parsed<WS_EVENT_TRANSACTION> rop;
+
+	rop.coin = op["coin"];
+	rop.type = op["type"];
+	rop.userid = op["userid"];
+	rop.quantity = op["quantity"];
+	rop.timestamp = op["timestamp"];
+	rop.completed = op["completed"];
+	rop.timestamp = op["timestamp"];
+	if(op["price"] == nullptr) {
+		rop.price = 0;
+	} else {
+		rop.price = op["price"];
+	}
+	// rop.fund = op["fund"];
+
+	return rop;
+}
+
+/*
+   Takes as input a raw string associated to a historyUpdate ws event and returns a parsed representation of it.
+*/
+template<>
+ws_msg_parsed<WS_EVENT_HISTORY> single<WS_EVENT_HISTORY>(std::string rmsg) {
+	std::vector<std::string> raw_vect;
+	ws_msg_parsed<WS_EVENT_HISTORY> rop;
+
+	/* Replace \" by " */
+	replace_all(rmsg, "\\\"", "\"");
+
+	/* Extract array */
+	raw_vect = tokenize_json_array(rmsg);
+
+	/* Create the output array by parsing each transaction elements */
+	for(auto & raw_tr : raw_vect) {
+		rop.transaction_list.push_back(single<WS_EVENT_TRANSACTION>(raw_tr));
+	}
+
+	return rop;
+}
+///////////////////////////////// TODO: PUT THIS FUCKING TRASH SOMEWHERE ELSE /////////
+/*
+   Takes as input a json and returns its representation as portfolio_coin_t.
+*/
+portfolio_coin_t parse_portfolio_coin(std::string coin, nlohmann::json op) {
+	portfolio_coin_t rop;
+
+	rop.coin = coin;
+	rop.amount = op["amount"];
+	rop.ts = op["timestamp"];
+	rop.mpp = op["meanPurchasePrice"];
+
+	return rop;
+}
+////////////////////////////////////////////////////////////////////////////
+
+/*
+   Takes as input a raw string associated to a mutualFundPortfolioUpdate as ws event and returns a parsed representation of it.
+*/
+template <>
+ws_msg_parsed<WS_EVENT_MF_PORTFOLIO> single<WS_EVENT_MF_PORTFOLIO>(std::string rmsg) {
+	ws_msg_parsed<WS_EVENT_MF_PORTFOLIO> rop;
+
+	nlohmann::json jparsed = nlohmann::json::parse(rmsg); /* Check for errors and emptiness needed */
+
+	rop.fund = jparsed["fund"];
+	rop.event = (jparsed["tUpdate"])["event"];
+
+	for(auto & raw_tr : (jparsed["tUpdate"])["transactions"]) {
+
+		rop.transactions.push_back(single_j<WS_EVENT_TRANSACTION>(raw_tr));
+	}
+
+	if((jparsed["tUpdate"])["portfolio"] !=  NULL) {
+		for(auto & item : (jparsed["tUpdate"])["portfolio"].items()) {
+			rop.portfolio.push_back(parse_portfolio_coin(item.key(), item.value()));
+		}
+	}
+
+	return rop;
+}
+
+} //parser
